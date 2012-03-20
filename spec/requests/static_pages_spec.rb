@@ -5,8 +5,8 @@ describe "StaticPages" do
 	subject { page }
   
 	describe "Home page" do
-		before { visit root_path }
-		it { should have_content 'betatrek' }
+		before { get root_path }
+		specify { response.should redirect_to rsvp_path }
 	end
 
 	describe "Help page" do

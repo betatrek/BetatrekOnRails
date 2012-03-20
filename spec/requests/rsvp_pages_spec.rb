@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe "RsvpPages" do
-  describe "GET /rsvp_pages" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get rsvp_pages_index_path
-      response.status.should be(200)
-    end
-  end
+
+	subject { page }
+
+	describe "new" do
+		before { visit rsvp_path }
+		
+		it { should have_selector 'title', text: full_title('Invitation') }
+		it { should have_content 'Get Invited' }
+		it { should have_content 'betatrek' }
+	end
 end

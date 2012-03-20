@@ -3,6 +3,13 @@
    Author: Dandre Allison
    ========================================================================== */
 @import "bootstrap";
+@import "base";
+
+.darkBackground {
+	background: $dark_gray;
+}
+
+.centered { margin: 0 auto; }
 
 /* =============================================================================
    Non-semantic helper classes
