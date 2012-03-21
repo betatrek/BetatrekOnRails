@@ -11,6 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define() do
+ActiveRecord::Schema.define(:version => 20120321011541) do
+
+  create_table "rsvps", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "uid"
+  end
+
+  add_index "rsvps", ["email"], :name => "index_rsvps_on_email", :unique => true
+  add_index "rsvps", ["uid"], :name => "index_rsvps_on_uid", :unique => true
 
 end

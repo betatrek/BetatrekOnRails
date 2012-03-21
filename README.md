@@ -8,7 +8,7 @@ This is the source code for [*betatrek.com*](http://www.betatrek.com)
 2. install PostgreSQL.
 3. To setup PostreSQL databases for development
 
-	1. execute `createuser betatrek` superuser? no create database? no create new roles? no
+	1. execute `createuser betatrek` Superuser? no, Create database? yes, Create new roles? no
 	2. execute `psql postgres` to enter the PostgreSQL terminal
 	3. enter `ALTER USER betatrek WITH ENCRYPTED PASSWORD 'bettafishswimminginapool';` to add a password.
 	4. confirm with `SELECT * FROM pg_user`
@@ -28,5 +28,10 @@ This is the source code for [*betatrek.com*](http://www.betatrek.com)
 * Can user `rails s` instead of `rails s`
 * Sometimes it is required to restart the server or guard processes when modifying certain files
 * Generate new controllers with `rails g controller **Name** optional list of actions --no-test-framework` (i.e. rails g controller StaticPages home --no-test-framework)
+	* Convention is to use plural nouns for controllers
+* Generate new models with `rails g model **Name** optional list of attributes` (i.e. rails g model Rsvp email:string)
+	* Convention is to use singular nouns for models
+	* Don't forget to set attr_accessible to limit mass assignments
 * Generate new test specifications with `rails g integration_test **name**` 
 * List currently defined routes with `rake routes`
+* When you migrate a database, use `annotate --position before` to add/update annotations in the corresponding model files
