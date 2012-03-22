@@ -29,12 +29,23 @@ describe "RsvpPages" do
 				click_button 'RSVP'
 			end
 
-			it { should have_content 'error' }
+			it { should have_content 'Email is invalid' }
 		end
 
 		describe "with missing email address" do
 			before { click_button 'RSVP' }
-			it { should have_content 'error' }
+			it { should have_content 'Email is invalid' }
+		end
+
+		describe "with same email address" do
+			let(:rsvp) { FactoryGirl.create :rsvp }
+			before do
+				rsvp.save
+				fill_in 'rsvp[email]', with: rsvp.email
+				click_button 'RSVP'
+			end
+
+			it { should have_content 'Email has already been taken' }
 		end
 	end
 

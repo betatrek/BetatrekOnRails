@@ -1,12 +1,11 @@
 <% if object.errors.any? %>
 	<div id="error_explanation">
 		<div class="alert alert-error">
-			The form contains <%= pluralize object.errors.count, "error" %>
+			<% object.errors.full_messages.each do |msg| %>
+				<% unless msg == "Email can't be blank" %>
+					<div>&middot; <%= msg %></div>
+				<% end %>
+			<% end %>
 		</div>
-		<ul>
-		<% object.errors.full_messages.each do |msg| %>
-			<li>* <%= msg %></li>
-		<% end %>
-		</ul>
 	</div>
 <% end %>

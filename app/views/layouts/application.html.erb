@@ -22,6 +22,7 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
   <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "debug-styles" if Rails.env.development? %>
   <%= csrf_meta_tags %>
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
@@ -33,11 +34,13 @@
 </head>
 
 <body>
-  <% flash.each do |key, value| %>
-    <%= content_tag :div, value, class: "alert alert-#{key}" %>
-  <% end %>
-  <%= yield %>
-  <%= debug params if Rails.env.development? %>
+  <div class="page <%= yield :page_extensions %>">
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "alert alert-#{key}" %>
+    <% end %>
+    <%= yield %>
+    <%= debug params if Rails.env.development? %>
+  </div>
 
   <!-- JavaScript at the bottom for fast page loading -->
   <%= javascript_include_tag "application" %>

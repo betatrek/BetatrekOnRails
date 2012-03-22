@@ -1,0 +1,17 @@
+/* Stlyes used on in the debug environment */
+@import "base";
+
+.debug_dump {
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	@include box-sizing(border-box);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	padding: 8.5px;
+	margin: 0 0 9px;
+	font-size: 12px;
+	line-height: 18px;
+	background-color: whiteSmoke;
+	@include border-radius(5px);
+}

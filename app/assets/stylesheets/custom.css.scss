@@ -8,6 +8,33 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 	color: $dark_gray;
 }
 
+/* Flash message styling */
+.alert {
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 0 20%;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #FCF8E3;
+	border: 1px solid #FBEED5;
+	@include border-radius(4px);							
+}
+.alert-heading {
+		color: #C09853;
+}
+.alert-danger, .alert-error {
+		background-color: #F2DEDE;
+		border-color: #EED3D7;
+}
+.alert-danger, .alert-error, .alert-danger .alert-heading, .alert-error .alert-heading {
+		color: #B94A48;
+}
+.alert-success {
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+}
+.alert-success, .alert-success .alert-heading {
+	color: #468847;
+}
+
 .darkBackground {
 	background: $dark_gray;
 }
@@ -17,6 +44,8 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 .noBorder { border: none; }
 
 .rounded { @include border-radius(5px); }
+
+.noBullets { list-style: none; }
 
 // Used on the Invitation page
 .betatrekBlueMod {
