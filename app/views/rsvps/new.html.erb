@@ -4,5 +4,16 @@
 <div class="page liquid darkBackground">
 	<div class="dotStockGraphBackground centered">
 		<span class="visuallyhidden">betatrek</span>
+		<div class="errors gCal centered">
+			<div class="inner"><%= render 'shared/error_messages', object: @rsvp %></div>
+		</div>
+		<div class="betatrekBlueMod centered" id="invitationFormMod" >
+			<%= form_for @rsvp do |f| %>
+
+				<%= f.text_field :email, placeholder: 'Get Invited', class: "blueGradientBackground rounded", id: "invitationInputField" %>
+
+				<%= f.submit "RSVP", class: "greyGradientBackground rounded", id: "invitationButton" %>
+			<% end %>
+		</div>
 	</div>
 </div>

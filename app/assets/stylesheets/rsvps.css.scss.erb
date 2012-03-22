@@ -1,6 +1,7 @@
 // Place all the styles related to the Rsvps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "base";
 
 // Background image used on the invitation page
 .dotStockGraphBackground {
@@ -8,4 +9,40 @@
 	// Dimensions of the image
 	width: 1200px;
 	height: 794px;
+}
+
+#invitationFormMod {
+	position: absolute;
+	left: 575px;
+	top: 217px;
+	width: 266px;
+	input {
+		
+		&:valid, &:invalid {
+			background-color: inherit;
+		}
+	}
+}
+
+#invitationInputField {
+	text-shadow: 0 1px 0 #333;
+	color: #fff;
+	width: 175px;
+	border: solid 1px #2a58b6;
+	padding: 4px 10px;
+}
+
+#invitationButton {
+	color: #141414;
+	font-size: 15px;
+	border: none;
+	line-height: 1;
+	padding: 8px 3px 6px;
+	margin-left: 6px;
+	&:hover {
+		color: $betatrek_blue;
+	}
+	&:active {
+		@include linear-gradient(top, #e5e5e5 0%,#808080 100%);
+	}
 }

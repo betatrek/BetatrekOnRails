@@ -1,10 +1,13 @@
 BetatrekOnRails::Application.routes.draw do
+  resources :rsvps, only: [:new, :create]
+
   get "rsvps/new"
 
   root to: 'static_pages#home'
 
   match '/rsvp', to: 'rsvps#new'
-  
+  match '/rsvp/:uid/:confirmation_code', to: 'rsvps#confirm', via: :put, as: :confirm
+
   match '/help', to: 'static_pages#help'
 
   # The priority is based upon order of creation:

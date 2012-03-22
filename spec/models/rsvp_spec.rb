@@ -2,11 +2,13 @@
 #
 # Table name: rsvps
 #
-#  id         :integer         not null, primary key
-#  email      :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  uid        :string(255)
+#  id                :integer         not null, primary key
+#  email             :string(255)
+#  created_at        :datetime        not null
+#  updated_at        :datetime        not null
+#  uid               :string(255)
+#  confirmed         :boolean         default(FALSE)
+#  confirmation_code :string(255)
 #
 
 require 'spec_helper'
@@ -18,6 +20,7 @@ describe Rsvp do
 	subject { @rsvp }
 
 	it { should respond_to :email }
+	it { should_not be_confirmed }
 
 	describe "when email not present" do
 		before { @rsvp.email = " " }
@@ -47,5 +50,29 @@ describe Rsvp do
 	    end
 
 	    it { should_not be_valid }
+	end
+
+	describe "when registered" do
+		before { @rsvp.save }
+
+		describe "should have a uid" do
+			subject { @rsvp.uid }
+			it { should_not be_nil }
+		end
+
+		describe "should have a confirmation_code" do
+			subject { @rsvp.confirmation_code }
+			it { should_not be_nil }
+		end
+
+		describe "when email address is confirmed with valid confirmation code" do
+			before { @rsvp.confirm_email @rsvp.confirmation_code }
+			it { should be_confirmed }
+		end
+
+		describe "when email address is confirmed with invalid confirmation code" do
+			before { @rsvp.confirm_email 'invalid' }
+			it { should_not be_confirmed }
+		end
 	end
 end

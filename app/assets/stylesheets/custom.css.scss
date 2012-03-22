@@ -2,14 +2,43 @@
    Primary styles
    Author: Dandre Allison
    ========================================================================== */
-@import "bootstrap";
 @import "base";
+
+input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	color: $dark_gray;
+}
 
 .darkBackground {
 	background: $dark_gray;
 }
 
 .centered { margin: 0 auto; }
+
+.noBorder { border: none; }
+
+.rounded { @include border-radius(5px); }
+
+// Used on the Invitation page
+.betatrekBlueMod {
+	font-family: $helvetica;
+	border: solid 1px #2c4377;
+	@include border-radius(5px);
+	padding: 8px 12px;
+	@include linear-gradient(top, $betatrek_blue 0%, $betatrek_blue 51%, $dark_betatrek_blue 52%, $dark_betatrek_blue 100%);
+}
+
+.blueGradientBackground {
+	@include linear-gradient(top, $dark_betatrek_blue 0%,$betatrek_blue 100%);
+}
+
+.greyGradientBackground {
+	@include linear-gradient(top, #f3f3f3 0%,#8e8e8e 100%);
+}
+
+.errors {
+	color: #d00;
+	background: #ddd;
+}
 
 /* =============================================================================
    Non-semantic helper classes

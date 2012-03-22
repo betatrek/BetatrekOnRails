@@ -186,8 +186,8 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 textarea { overflow: auto; vertical-align: top; }
 
 /* Colors for form validity */
-input:valid, textarea:valid, select:valid { background-color: #77f077; }
-input:invalid, textarea:invalid, select:invalid { background-color: #f07777; }
+input[type~="submit"]:valid, textarea:valid, select:valid { background-color: #77f077; }
+input[type~="submit"]:invalid, textarea:invalid, select:invalid { background-color: #f07777; }
 
 
 /* =============================================================================
