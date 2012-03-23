@@ -47,7 +47,8 @@ end
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'capify-ec2'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
