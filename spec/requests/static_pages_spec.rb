@@ -6,7 +6,7 @@ describe "StaticPages" do
   
 	describe "Home page" do
 		before { get root_path }
-		specify { response.should redirect_to rsvp_path }
+		specify { response.should redirect_to new_rsvp_path }
 	end
 
 	describe "Help page" do

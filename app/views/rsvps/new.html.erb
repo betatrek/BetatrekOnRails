@@ -3,6 +3,9 @@
 <% provide :title, 'Invitation' %>
 <% provide :page_extensions, 'liquid darkBackground' %>
 <div class="dotStockGraphBackground centered">
+	<% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "alert alert-#{key}" %>
+    <% end %>
 	<%= render 'shared/error_messages', object: @rsvp %>
 	<span class="visuallyhidden">betatrek</span>
 	<div class="betatrekBlueMod centered" id="invitationFormMod" >

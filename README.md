@@ -35,3 +35,4 @@ This is the source code for [*betatrek.com*](http://www.betatrek.com)
 * Generate new test specifications with `rails g integration_test **name**` 
 * List currently defined routes with `rake routes`
 * When you migrate a database, use `annotate --position before` to add/update annotations in the corresponding model files
+* Generate new mailers with `rails g mailer **name**`

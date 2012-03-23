@@ -5,14 +5,14 @@ describe "RsvpPages" do
 	subject { page }
 
 	describe "new" do
-		before { visit rsvp_path }
+		before { visit new_rsvp_path }
 
 		it { should have_selector 'title', text: full_title('Invitation') }
 		it { should have_content 'betatrek' }
 	end
 
 	describe "create" do
-		before { visit rsvp_path }
+		before { visit new_rsvp_path }
 
 		describe "with valid email address" do
 			before do 
@@ -57,17 +57,17 @@ describe "RsvpPages" do
 		
 		describe "with valid confirmation code" do
 			before { put confirm_path(rsvp.uid, rsvp.confirmation_code) }
-			it { should be_success }
+			it { should redirect_to rsvp_path(rsvp) }
 		end
 
 		describe "with invalid confirmation code" do
 			before { put "/rsvp/#{rsvp.uid}/invalid" }
-			specify { response.should redirect_to rsvps_new_path }
+			it { should redirect_to new_rsvp_path }
 		end
 
 		describe "with manual path (validity of invalid test)" do
 			before { put "/rsvp/#{rsvp.uid}/#{rsvp.confirmation_code}" }
-			it { should be_success }
+			it { should redirect_to(rsvp) }
 		end
 	end
 end
