@@ -3,7 +3,7 @@ BetatrekOnRails::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/rsvp/:uid/:confirmation_code', to: 'rsvps#confirm', via: :put, as: :confirm
+  match '/rsvp/:uid/:confirmation_code', to: 'rsvps#confirm', via: [:put, :get], as: :confirm
 
   match '/help', to: 'static_pages#help'
 

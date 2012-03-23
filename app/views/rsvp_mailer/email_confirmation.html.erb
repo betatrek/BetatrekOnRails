@@ -4,13 +4,14 @@
 	We are glad you have RSVPed for our product. We will update you with more information about us and let you know when we are finished preparing to help you.
 </p>
 <p>
-	
-	<form method="post" action="<%= confirm_url(@rsvp.uid, @rsvp.confirmation_code) %>" class="button_to">
+	<%= link_to "Please let us know we got the correct email address.",
+		confirm_url(@rsvp.uid, @rsvp.confirmation_code) %>
+	<!--<form method="post" action="<%= confirm_url(@rsvp.uid, @rsvp.confirmation_code) %>" class="button_to">
        <div>
          <input type="hidden" name="_method" value="put" />
          <div><input value="Please let us know we got the correct email address." type="submit" /></div>
        </div>
-     </form>
+     </form>-->
 </p>
 <p>
 	Thanks again from all of us at 
