@@ -4,6 +4,11 @@ class RsvpsController < ApplicationController
   end
 
   def show
+    session[:email] ||= Rsvp.find_by_id params[:id]
+    if not session[:email]
+      redirect_to new_rsvp_path
+    end
+    @email = session[:email]
   end
 
   def create
@@ -22,16 +27,9 @@ class RsvpsController < ApplicationController
   		flash[:error] = "You're link doesn't match what we have on record."
       redirect_to new_rsvp_path
   	else
-      session[:email] = true
+      session[:email] = rsvp.email
       flash[:success] = "We will update you at #{rsvp.email} with new information as it because available"
       redirect_to rsvp_path rsvp
   	end 
-  end
-
-  def confirmed
-    if not session[:email]
-      redirect_to new_rsvp_path
-    end
-    @email = session[:email]
   end
 end
