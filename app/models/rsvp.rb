@@ -23,6 +23,10 @@ class Rsvp < ActiveRecord::Base
 					  format: { with: VALID_EMAIL_REGEX },
 					  uniqueness: { case_sensitive: false }
 
+	def to_param
+		uid
+	end
+
 	def confirmed?
 		confirmed
 	end
@@ -31,7 +35,7 @@ class Rsvp < ActiveRecord::Base
 		if (not confirmation_code.nil?) && confirmation_code == self.confirmation_code
 			self.confirmed = true
 			self.confirmation_code = nil
-			save
+			#save
 		end
 	end
 

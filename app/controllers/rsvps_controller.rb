@@ -4,7 +4,7 @@ class RsvpsController < ApplicationController
   end
 
   def show
-    session[:email] ||= Rsvp.find_by_id params[:id]
+    session[:email] ||= Rsvp.find_by_uid params[:id]
     if not session[:email]
       redirect_to new_rsvp_path
     end
