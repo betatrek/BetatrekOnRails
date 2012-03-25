@@ -12,7 +12,7 @@ ActionMailer::Base.smtp_settings = {
 
 # Sets the default host to use to create urls in the ActionMailer based on the environment
 if Rails.env.production?
-    ActionMailer::Base.default_url_options[:host] = "betatrek.com"
+    ActionMailer::Base.default_url_options[:host] = "ec2-23-20-185-26.compute-1.amazonaws.com"# temporary "betatrek.com"
 else
     ActionMailer::Base.default_url_options[:host] = "localhost:3000"
 end
