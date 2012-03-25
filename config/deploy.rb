@@ -40,6 +40,3 @@ set :deploy_to,   "/webapps/#{application}"
 # SSH options
 ssh_options[:keys] = ["#{ENV['HOME']}/betatrek.pem"] # aws server cert
 ssh_options[:forward_agent] = true
-
-#set :rake, "/home/ubuntu/.rvm/gems/ruby-1.9.3-p125/bin/rake"
-#set :ruby, "/home/ubuntu/.rvm/gems/ruby-1.9.3-p125/bin/ruby"
