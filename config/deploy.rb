@@ -1,5 +1,13 @@
-set :application, "betatrek"
+# RVM bootstrap
+$:.unshift(File.expand_path("~/.rvm/lib"))
+require 'rvm/capistrano'
+set :rvm_ruby_string, '1.9.3-p125'
+set :rvm_type, :user
 
+# bundler bootstrap
+require 'bundler/capistrano'
+
+set :application, "betatrek"
 role :web, "ec2-23-20-185-26.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
 role :app, "ec2-23-20-185-26.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
 role :db,  "ec2-23-20-185-26.compute-1.amazonaws.com", :primary => true # This is where Rails migrations will run
@@ -23,7 +31,7 @@ set :repository, "git@github.com:betatrek/BetatrekOnRails"  # Your clone URL
 set :scm, "git"
 set :user, "ubuntu"  # The server's user for deploys
 set :use_sudo, false
-#set :scm_passphrase, #"flyingbettafish"  # The deploy user's password
+#set :scm_passphrase, ""  # The deploy user's password
 
 set :branch, "master"
 set :deploy_via, :remote_cache
@@ -32,3 +40,6 @@ set :deploy_to,   "/webapps/#{application}"
 # SSH options
 ssh_options[:keys] = ["#{ENV['HOME']}/betatrek.pem"] # aws server cert
 ssh_options[:forward_agent] = true
+
+#set :rake, "/home/ubuntu/.rvm/gems/ruby-1.9.3-p125/bin/rake"
+#set :ruby, "/home/ubuntu/.rvm/gems/ruby-1.9.3-p125/bin/ruby"
