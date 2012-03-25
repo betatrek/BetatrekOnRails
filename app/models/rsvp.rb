@@ -35,17 +35,17 @@ class Rsvp < ActiveRecord::Base
 		if (not confirmation_code.nil?) && confirmation_code == self.confirmation_code
 			self.confirmed = true
 			self.confirmation_code = nil
-			#save
+			save
 		end
 	end
 
 	private
 
 		def create_uid
-			self.uid = SecureRandom.urlsafe_base64
+			self.uid ||= SecureRandom.urlsafe_base64
 		end
 
 		def create_confirmation_code
-			self.confirmation_code = Digest::SHA1.hexdigest("salt #{Time.now.to_f}")
+			self.confirmation_code = Digest::SHA1.hexdigest("salt #{Time.now.to_f}") unless confirmed?
 		end
 end
