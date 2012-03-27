@@ -54,5 +54,6 @@ This is the source code for [*betatrek.com*](http://www.betatrek.com)
 		** Now `ssh-add -l` should list your key's fingerprint
 		** If you want to ssh with the agent: `ssh -A -i betatrek.pem …`
 		** Capistrano should be configured to automatically forward your ssh-agent
+		** Also note that the ssh-agent should expire eventually and would need to be refreshed.
 4. Success!
 
