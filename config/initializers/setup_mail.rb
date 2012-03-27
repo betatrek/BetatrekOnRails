@@ -10,7 +10,7 @@ if Rails.env.production?
 		:authentication       => "plain",
 		:enable_starttls_auto => true
 	}
-    ActionMailer::Base.default_url_options[:host] = "ec2-23-20-185-26.compute-1.amazonaws.com"# temporary "betatrek.com"
+    ActionMailer::Base.default_url_options[:host] = "betatrek.com"
 else
 	ActionMailer::Base.smtp_settings = {
 		:address              => "smtp.gmail.com",

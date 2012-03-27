@@ -8,9 +8,9 @@ set :rvm_type, :user
 require 'bundler/capistrano'
 
 set :application, "betatrek"
-role :web, "ec2-23-20-185-26.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
-role :app, "ec2-23-20-185-26.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
-role :db,  "ec2-23-20-185-26.compute-1.amazonaws.com", :primary => true # This is where Rails migrations will run
+role :web, "107.20.190.97"                          # Your HTTP server, Apache/etc
+role :app, "107.20.190.97"                          # This may be the same as your `Web` server
+role :db,  "107.20.190.97", :primary => true # This is where Rails migrations will run
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
