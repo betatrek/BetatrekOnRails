@@ -1,7 +1,7 @@
 BetatrekOnRails::Application.routes.draw do
   resources :rsvps, only: [:show, :new, :create]
 
-  root to: 'static_pages#home'
+  root to: 'rsvps#new'
 
   match '/rsvp/:uid/:confirmation_code', to: 'rsvps#confirm', via: [:put, :get], as: :confirm
 

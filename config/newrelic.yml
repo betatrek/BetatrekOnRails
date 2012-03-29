@@ -176,6 +176,9 @@ common: &default_settings
   # you are running multi-threaded.  Please let us know.
   # multi_threaded = false
 
+browser_monitoring:
+  auto_instrument: true
+
 # Application Environments
 # ------------------------------------------
 # Environment-specific settings are in this section.

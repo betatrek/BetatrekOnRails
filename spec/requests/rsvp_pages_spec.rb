@@ -40,7 +40,6 @@ describe "RsvpPages" do
 		describe "with same email address" do
 			let(:rsvp) { FactoryGirl.create :rsvp }
 			before do
-				#rsvp.save
 				fill_in 'rsvp[email]', with: rsvp.email
 				click_button 'RSVP'
 			end
@@ -50,8 +49,7 @@ describe "RsvpPages" do
 	end
 
 	describe "confirm" do
-		let(:rsvp) { FactoryGirl.create :rsvp }
-		#before { rsvp.save } 
+		let(:rsvp) { FactoryGirl.create :rsvp } 
 
 		subject { response }
 		

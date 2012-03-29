@@ -20,14 +20,14 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 	top: 15px;							
 }
 .alert-heading {
-		color: #C09853;
+	color: #C09853;
 }
 .alert-danger, .alert-error {
-		background-color: #F2DEDE;
-		border-color: #EED3D7;
+	background-color: #F2DEDE;
+	border-color: #EED3D7;
 }
 .alert-danger, .alert-error, .alert-danger .alert-heading, .alert-error .alert-heading {
-		color: #B94A48;
+	color: #B94A48;
 }
 .alert-success {
 	background-color: #DFF0D8;
@@ -35,6 +35,9 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 }
 .alert-success, .alert-success .alert-heading {
 	color: #468847;
+}
+.close {
+	float: right;
 }
 
 .darkBackground {

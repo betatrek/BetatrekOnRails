@@ -4,16 +4,18 @@
 <% provide :page_extensions, 'liquid darkBackground' %>
 <div class="dotStockGraphBackground centered">
 	<% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "alert alert-#{key}" %>
+      <%= content_tag :div, class: "alert alert-#{key}" do -%>
+      	<%= value %> <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <% end -%>
     <% end %>
 	<%= render 'shared/error_messages', object: @rsvp %>
 	<span class="visuallyhidden">betatrek</span>
 	<div class="betatrekBlueMod centered" id="invitationFormMod" >
 		<%= form_for @rsvp do |f| %>
 
-			<%= f.text_field :email, placeholder: 'Get Invited', class: "blueGradientBackground rounded", id: "invitationInputField" %>
+			<%= f.email_field :email, placeholder: 'Get Invited', class: "blueGradientBackground rounded", id: "invitationInputField" %>
 
-			<%= f.submit "RSVP", class: "greyGradientBackground rounded", id: "invitationButton" %>
+			<%= f.submit "RSVP", class: "greyGradientBackground rounded btn", id: "invitationButton" %>
 		<% end %>
 	</div>
 </div>

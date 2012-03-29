@@ -3,11 +3,6 @@ require 'spec_helper'
 describe "StaticPages" do
 
 	subject { page }
-  
-	describe "Home page" do
-		before { get root_path }
-		specify { response.should redirect_to new_rsvp_path }
-	end
 
 	describe "Help page" do
 		before { visit help_path }

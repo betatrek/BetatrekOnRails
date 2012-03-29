@@ -1,4 +1,7 @@
 class RsvpsController < ApplicationController
+
+  caches_page :new, :show
+
   def new
     @rsvp = Rsvp.new
   end
