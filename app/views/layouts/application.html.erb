@@ -40,14 +40,14 @@
     <%= debug params if Rails.env.development? %>
 
   <!-- JavaScript at the bottom for fast page loading -->
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", defer: 'defer' %>
   <!-- end scripts -->
 
 
   <% if Rails.env.production? %>
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
        mathiasbynens.be/notes/async-analytics-snippet -->
-  <script>
+  <script async>
     var _gaq=[['_setAccount','UA-27225736-1'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
