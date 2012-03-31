@@ -1,6 +1,6 @@
 class RsvpsController < ApplicationController
 
-  caches_page :new, :show
+  caches_page :show
 
   def new
     @rsvp = Rsvp.new
@@ -27,7 +27,7 @@ class RsvpsController < ApplicationController
   	rsvp = Rsvp.find_by_uid params[:uid]
   	rsvp.confirm_email params[:confirmation_code]
   	if not rsvp.confirmed?
-  		flash[:error] = "You're link doesn't match what we have on record."
+      flash[:error] = "You're link doesn't match what we have on record."
       redirect_to new_rsvp_path
   	else
       session[:email] = rsvp.email
