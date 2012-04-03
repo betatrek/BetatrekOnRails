@@ -23,7 +23,7 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.new params[:rsvp]
     if @rsvp.save
       flash.now[:success] = "Thank you, we will send you a link to verify we have the correct email address."
-      RsvpMailer.email_confirmation(@rsvp).deliver
+      RsvpMailer.delay.email_confirmation(@rsvp)
       @rsvp = Rsvp.new
     end
     respond_to do |format|

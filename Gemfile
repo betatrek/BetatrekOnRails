@@ -13,6 +13,9 @@ gem 'client_side_validations'
 gem 'mail'
 gem 'newrelic_rpm'
 gem 'dalli'
+# Delayed_job: background process queuing https://github.com/collectiveidea/delayed_job
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development do
   gem 'annotate', '~> 2.4.1.beta'

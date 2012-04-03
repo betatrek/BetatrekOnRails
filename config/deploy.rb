@@ -40,3 +40,16 @@ set :deploy_to,   "/webapps/#{application}"
 # SSH options
 ssh_options[:keys] = ["#{ENV['HOME']}/betatrek.pem"] # aws server cert
 ssh_options[:forward_agent] = true
+
+# Capistrano Recipes for managing delayed_job
+#
+# If you want to use command line options, for example to start multiple workers,
+# define a Capistrano variable delayed_job_args:
+#
+#   set :delayed_job_args, "-n 2"
+#
+# Add these callbacks to have the delayed_job process restart when the server
+# is restarted:
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"

@@ -43,7 +43,7 @@ This is the source code for [*betatrek.com*](http://www.betatrek.com)
 	* Commit all tracked (staged) files: `git commit -am "**Commit note**" (avoid exclamations, or remove the m to enter the message with the default text editor) again, check with `git status`
 2. Push your local changes to the remote repository `git push`
 3. Deploy to the server (with Capistrano)
-	* First time (new app on the server): `cap deploy:setup` to set up the directories on the server. Then `cap cold_deploy` to deploy the app on the server
+	* First time (new app on the server): `cap deploy:setup` to set up the directories on the server. Then `cap deploy:cold` to deploy the app on the server
 	* If you're just changing code or configuration: `cap deploy`
 	* If you're just migrating a database: `cap deploy:migrate`
 	* If you're changing code and migrating: `cap deploy:migration`
