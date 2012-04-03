@@ -26,7 +26,10 @@ class RsvpsController < ApplicationController
       RsvpMailer.email_confirmation(@rsvp).deliver
       @rsvp = Rsvp.new
     end
-    render 'new'
+    respond_to do |format|
+      format.html { render 'new' }
+      format.js
+    end
   end
 
   # Switches the Rsvp to being confirmed and notifies the user, or tells the user something was wrong with the

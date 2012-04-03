@@ -3,15 +3,17 @@
 <% provide :title, 'Invitation' %>
 <% provide :page_extensions, 'liquid darkBackground' %>
 <div class="dotStockGraphBackground centered">
-	<% flash.each do |key, value| %>
-		<%= content_tag :div, class: "alert alert-#{key}" do -%>
-			<%= value %> <a class="close" data-dismiss="alert" href="#">&times;</a>
-		<% end -%>
-    <% end %>
-	<%= render 'shared/error_messages', object: @rsvp %>
+	<div id="messages">
+		<% flash.each do |key, value| %>
+			<%= content_tag :div, class: "alert alert-#{key}" do -%>
+				<%= value %> <a class="close" data-dismiss="alert" href="#">&times;</a>
+			<% end -%>
+	    <% end %>
+		<%= render 'shared/error_messages', object: @rsvp %>
+	</div>
 	<span class="visuallyhidden">betatrek</span>
 	<div class="betatrekBlueMod centered" id="invitationFormMod" >
-		<%= form_for @rsvp do |f| %>
+		<%= form_for @rsvp, remote: true do |f| %>
 
 			<%= f.email_field :email, placeholder: 'Get Invited', class: "blueGradientBackground rounded", id: "invitationInputField" %>
 
