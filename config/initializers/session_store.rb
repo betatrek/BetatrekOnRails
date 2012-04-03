@@ -9,4 +9,4 @@ BetatrekOnRails::Application.config.session_store :cookie_store, key: '_Betatrek
 
 # Uses Dalli as a session store
 require 'action_dispatch/middleware/session/dalli_store'
-Rails.application.config.session_store :dalli_store, :memcache_server => ['107.20.190.97'], :namespace => 'sessions', :key => '_foundation_session', :expire_after => 30.minutes
+Rails.application.config.session_store :dalli_store, :memcache_server => ['localhost'], :namespace => 'sessions', :key => '_foundation_session', :expire_after => 30.minutes
