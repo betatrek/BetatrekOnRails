@@ -16,3 +16,4 @@
 
 # Ignore assets in public folder
 /public/assets
+/public/rsvps
