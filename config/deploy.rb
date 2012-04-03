@@ -42,7 +42,35 @@ ssh_options[:keys] = ["#{ENV['HOME']}/betatrek.pem"] # aws server cert
 ssh_options[:forward_agent] = true
 
 # Capistrano Recipes for managing delayed_job
-#
+namespace :delayed_job do
+    def rails_env
+      fetch(:rails_env, false) ? "RAILS_ENV=#{fetch(:rails_env)}" : ''
+    end
+
+    def args
+      fetch(:delayed_job_args, "")
+    end
+
+    def roles
+      fetch(:delayed_job_server_role, :app)
+    end
+
+    desc "Stop the delayed_job process"
+    task :stop, :roles => lambda { roles } do
+      run "cd #{current_path};#{rails_env} script/delayed_job stop"
+    end
+
+    desc "Start the delayed_job process"
+    task :start, :roles => lambda { roles } do
+      run "cd #{current_path};#{rails_env} script/delayed_job start #{args}"
+    end
+
+    desc "Restart the delayed_job process"
+    task :restart, :roles => lambda { roles } do
+      run "cd #{current_path};#{rails_env} script/delayed_job restart #{args}"
+    end
+end
+
 # If you want to use command line options, for example to start multiple workers,
 # define a Capistrano variable delayed_job_args:
 #
