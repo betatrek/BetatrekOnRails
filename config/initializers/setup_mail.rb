@@ -2,7 +2,7 @@ require 'development_mail_interceptor'
 
 if Rails.env.production?
 	ActionMailer::Base.smtp_settings = {
-		:address              => "smtp.sendgrid.com",
+		:address              => "smtp.sendgrid.net",
 		:port                 => 587,
 		:domain               => "betatrek.com",
 		:user_name            => "bettafish",
