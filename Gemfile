@@ -16,6 +16,8 @@ gem 'dalli'
 # Delayed_job: background process queuing https://github.com/collectiveidea/delayed_job
 gem 'delayed_job_active_record'
 gem 'daemons'
+# state_machine adds support for creating state machines for attributes
+gem 'state_machine', '~>1.1.2'
 
 group :development do
   gem 'annotate', '~> 2.4.1.beta'

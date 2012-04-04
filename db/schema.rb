@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404060425) do
+ActiveRecord::Schema.define(:version => 20120404153036) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20120404060425) do
     t.string   "remember_token"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "status"
   end
 
   add_index "users", ["confirmation_code"], :name => "index_users_on_confirmation_code"
