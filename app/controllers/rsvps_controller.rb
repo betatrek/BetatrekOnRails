@@ -1,7 +1,7 @@
 class RsvpsController < ApplicationController
 
   # Allows the Rsvp confirmed page to be served statically, since it is the same for all users
-  caches_page :new, :show
+  caches_page :new
 
   # Runs before rendering the RSVP page to create a new Rsvp object
   def new
