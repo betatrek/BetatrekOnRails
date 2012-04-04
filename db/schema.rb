@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403052223) do
+ActiveRecord::Schema.define(:version => 20120404060425) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -40,5 +40,24 @@ ActiveRecord::Schema.define(:version => 20120403052223) do
 
   add_index "rsvps", ["email"], :name => "index_rsvps_on_email", :unique => true
   add_index "rsvps", ["uid"], :name => "index_rsvps_on_uid", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "admin"
+    t.string   "uid"
+    t.string   "confirmation_code"
+    t.string   "country"
+    t.string   "state"
+    t.string   "remember_token"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "users", ["confirmation_code"], :name => "index_users_on_confirmation_code"
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["uid"], :name => "index_users_on_uid", :unique => true
 
 end
