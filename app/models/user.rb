@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
 		end
 	end
 
-	# Uses the UID as the URI for Rsvps
+	# Uses the UID as the URI for users
 	def to_param
 		uid
 	end

@@ -1,0 +1,12 @@
+<%= render 'shared/dandre' %>
+<% provide :description, 'betatrek sign up page, where new users can register for accounts, and existing users can sign in.' %>
+<% provide :title, 'create account' %>
+<% provide :step, '1' %>
+<% provide :body_extensions, "signupBackgroundColor" %>
+<% provide :main_extensions, "signupBackground" %>
+<!-- For the screen readers -->
+<p class="visuallyhidden">Algorithmic advice no matter the class.</p>
+<!-- Sign up form -->
+<%= form_for @user, id: "signupFormPosition" do |f| %>
+	<p class="visuallyhidden">Begin Here</p>
+<% end %>

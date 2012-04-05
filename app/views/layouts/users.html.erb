@@ -40,9 +40,26 @@
   <% end -%>
 </head>
 
-<body class="page <%= yield :page_extensions %>">
-    <%= yield %>
-    <%= debug params if Rails.env.development? %>
+<body class="page liquid">
+    <!-- Header bar -->
+    <% content_for :first_button do %>
+      <%= render partial: 'shared/header_button', locals: { label: 'sign in', url: '' } %>
+    <% end %>
+    <% content_for :second_button do %>
+      <%= render partial: 'shared/header_button', locals: { label: 'register', url: '' } %>
+    <% end %>
+    <%= render 'shared/header_bar' %>
+
+    <!-- Progress bar (don't forget to provide a :step) -->
+    <%= render 'shared/account_creation_progress_bar' %>
+    <!-- Body -->
+    <div class="body <%= yield :body_extensions %>">
+      <div class="main <%= yield :main_extensions %>">
+        <%= yield %>
+        <%= debug params if Rails.env.development? %>   
+      </div>
+    </div>
+    <!-- end Body -->
 
   <!-- JavaScript at the bottom for fast page loading -->
   <%= javascript_include_tag "application", defer: 'defer' %>

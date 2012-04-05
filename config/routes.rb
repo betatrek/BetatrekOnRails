@@ -1,7 +1,10 @@
 BetatrekOnRails::Application.routes.draw do
   resources :rsvps, only: [:show, :new, :create]
+  resources :users
 
   root to: 'rsvps#new'
+
+  match '/signup', to: 'users#new'
 
   match '/rsvp/:uid/:confirmation_code', to: 'rsvps#confirm', via: [:put, :get], as: :confirm
 
