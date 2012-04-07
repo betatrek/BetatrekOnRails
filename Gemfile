@@ -24,14 +24,6 @@ group :development do
   gem 'rails-boilerplate'
 end
 
-group :development, :test do
-  gem 'rspec-rails', '2.8.1'
-  gem 'guard-rspec', '0.5.5'
-  gem 'guard-spork', '0.3.2'
-  gem 'spork', '0.9.0'
-end
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -44,6 +36,12 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'growl', '1.0.3'
+  gem 'spork', '0.9.0'
+  gem 'rspec-rails', '2.8.1'
+  gem 'guard-rspec', '0.5.5'
+  gem 'guard-spork', '0.3.2'
+  # Bundler guard allows to automatically & intelligently install/update bundle when needed
+  gem 'guard-bundler'
   gem 'factory_girl_rails', '1.4.0'
 end
 

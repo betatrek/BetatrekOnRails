@@ -1,0 +1,97 @@
+/* ============================================================
+   Defines the progress indicator
+   ============================================================ */
+ @import "base";
+
+.progress {
+	padding: 10px 0;
+	float: left;
+	width: 100%;
+	@include linear-gradient(top, rgba(39,39,39,1) 0%,rgba(39,39,39,1) 91%,rgba(39,39,39,0.47) 100%,
+		                     $fallback: #272727);
+}
+/* Displayed in the sections */
+.progress .description {
+    font-size: 16px;
+    padding: 14px 5px 14px 40px;
+    float: left;
+    position: relative;
+    left: -23px;
+	color: #fff;
+}
+/* Creates the arrow tail effect */
+.progress .arrowTail {
+	margin-left: 25px;
+    z-index: 10;
+	border-left: 23px solid #272727; /* Match the background color */
+}
+/* Puts the first description on the appropriate z-index */
+.progress .first {
+    z-index: 9;
+}
+/* Positions the first arrowhead */
+.progress .firstArrowhead {
+    z-index: 9;
+    left: -23px;
+}
+/* Puts the second description on the appropriate z-index */
+.progress .second {
+    z-index: 8;
+    left: -46px;
+}
+/* Positions the second arrowhead */
+.progress .secondArrowhead {
+    z-index: 8;
+    left: -46px;
+}
+/* Puts the third description on the appropriate z-index */
+.progress .third {
+    z-index: 7;
+    left: -69px;
+}
+/* Positions the third arrowhead */
+.progress .thirdArrowhead {
+    z-index: 7;
+    left: -69px;
+}
+	/* ~~~~ Defines the color indications for step 1 ~~~~ */
+	.progress.step1 .first {
+		background: $betatrek_blue;
+	}
+	.progress.step1 .firstArrowhead {
+		border-left: 23px solid $betatrek_blue; /* Match the description background color*/
+	}
+	.progress.step1 .second,
+	.progress.step1 .third, .progress.step2 .third {
+		color: #7f7f7f;	
+		opacity: .3;
+	}
+	/* ~~~~ Defines the color indications for step 2 ~~~~ */
+	.progress.step2 .first, .progress.step3 .first {
+		background: #427cda;
+		color: #ccc;
+	}
+	.progress.step2 .firstArrowhead, .progress.step3 .firstArrowhead {
+		border-left: 23px solid #427cda; /* Match the description background color*/
+	}
+	.progress.step2 .second {
+		background: $betatrek_blue;
+	}
+	.progress.step2 .secondArrowhead {
+		border-left: 23px solid $betatrek_blue; /* Match the description background color*/
+	}
+	/* ~~~~ Defines the color indications for step 3 ~~~~ */
+	.progress.step3 .second {
+		background: #427cda;
+		color: #ccc;	
+	}
+	.progress.step3 .secondArrowhead {
+		border-left: 23px solid #427cda; /* Match the description background color*/	
+	}
+	.progress.step3 .third {
+		background: $betatrek_blue;
+		color: #fff;	
+	}
+	.progress.step3 .thirdArrowhead {
+		border-left: 23px solid $betatrek_blue; /* Match the description background color*/	
+	}

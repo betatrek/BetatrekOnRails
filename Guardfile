@@ -38,3 +38,9 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
   end
 end
 
+
+guard 'bundler' do
+  watch('Gemfile')
+  # Uncomment next line if Gemfile contain `gemspec' command
+  # watch(/^.+\.gemspec/)
+end

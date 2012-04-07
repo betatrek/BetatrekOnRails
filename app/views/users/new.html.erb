@@ -7,6 +7,17 @@
 <!-- For the screen readers -->
 <p class="visuallyhidden">Algorithmic advice no matter the class.</p>
 <!-- Sign up form -->
-<%= form_for @user, id: "signupFormPosition" do |f| %>
+<form id="signup" class="signupFormPosition" action="">
 	<p class="visuallyhidden">Begin Here</p>
-<% end %>
+    <input type="email" name="email"
+           class="defaultInputField niceVerticalSpacing" 
+		   id="signup_email" placeholder="email" />
+    <input type="password" name="password"
+           class="defaultInputField niceVerticalSpacing" 
+           id="signup_password" maxlength="24" placeholder="password" />
+    <button type="submit" name="creation" 
+            class="formActionButton niceVerticalSpacing"
+			id="begin_account_creation">
+			Begin!
+	</button>
+</form>

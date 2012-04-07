@@ -6,27 +6,29 @@
 	    	<a class="betatrekLink" href="">betatrek</a>
 		</div>
 		<!-- end Logo of Header Bar -->
-		<!-- First Button of Header Bar -->
-		<% if content_for? :first_button %>
-    	<div class="unit unitExt">
-            <%= yield :first_button %>
-		</div>
-		<% end %>
-		<!-- end First Button of Header Bar -->
-		<!-- Second Button of Header Bar -->
-		<% if content_for? :second_button %>
-    	<div class="unit unitExt">
-            <%= yield :second_button %>
-		</div>
-		<% end %>
-		<!-- end Second Button of Header Bar -->
+		<!-- Buttons -->
 		<% if content_for? :third_button %>
-		<!-- Third Button of Header Bar -->
-		<div class="unit unitExt">
-            <%= yield :third_button %>
-		</div>
-		<!-- end Third Button of Header Bar -->
+			<!-- Third Button of Header Bar -->
+			<div class="unit unitExt">
+	            <%= yield :third_button %>
+			</div>
+			<!-- end Third Button of Header Bar -->
 		<% end %>
+		<% if content_for? :second_button %>
+			<!-- Second Button of Header Bar -->
+	    	<div class="unit unitExt">
+	            <%= yield :second_button %>
+			</div>
+			<!-- end Second Button of Header Bar -->
+		<% end %>
+		<% if content_for? :first_button %>
+			<!-- First Button of Header Bar -->
+	    	<div class="unit unitExt">
+	            <%= yield :first_button %>
+			</div>
+			<!-- end First Button of Header Bar -->
+		<% end %>
+		<!-- end Buttons -->
 	</div>
 	<!-- end Line -->
 </div>

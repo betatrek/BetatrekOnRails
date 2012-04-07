@@ -8,6 +8,12 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 	color: $dark_gray;
 }
 
+@font-face {
+	font-family: quadranta;
+	src: url("assets/quadranta.ttf"), format("truetype");
+	src: local("quadranta"), url("assets/quadranta.ttf"), format("truetype");
+}
+
 /* Flash message styling */
 .alert {
 	padding: 8px 14px;
@@ -57,6 +63,25 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 
 .noBullets { list-style: none; }
 
+/* Creates a triangle using border transparency */
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+    float: left;
+    position: relative;
+}
+
+.niceVerticalSpacing {
+	margin: 4px 0;
+}
+
+.whiteAndShadowed {
+	color: #fff;
+	text-shadow: 0 1px 0 #333;
+}
+
 // Used on the Invitation page
 .betatrekBlueMod {
 	font-family: $helvetica;
@@ -77,6 +102,116 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 .errors {
 	color: #d00;
 	background: #ddd;
+}
+
+.betatrekLink {
+	text-decoration: none;
+	&:link {
+		color: #414958;
+		text-decoration: none;
+	}
+	&:visited {
+		color: #4e5869;
+		text-decoration: underline;
+	}
+	&:hover, &:active, &:focus {
+		text-decoration: none;
+	}
+}
+
+/* Defines the style for the logo */
+.betatrekLogo {
+	font-size: 25px;
+	font-family: quadranta;
+	padding-top: 5px; /* Improves vertical centering */
+	/* Highlight */
+	text-shadow: 0 2px 3px #fff;
+}
+
+/* Extends line to customize */
+.betatrekHead {
+	padding: 14px 25px;
+	/* Highlight */
+	text-shadow: 0 2px 3px #fff;
+	@include linear-gradient(top, #fdfdfd, #bdbdbd 100%);
+}
+
+/* An oval container with gradiant background */
+.ovalContainer {
+	margin: 0 8px;
+	@include border-radius(25px);
+    @include box-shadow(
+		inset 0 1px 1px -1px #000, /* top shadow */
+		0 1px 1px -1px #fff); /* bottom highlight */
+	@include linear-gradient(top, #fdfdfd 0%,#bdbdbd 100%);
+}
+/* The inner component of the oval container */
+.ovalContainer .inner {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 11px;
+	text-align: center;
+}
+
+/* Extends ovalContainer */
+.ovalButton {
+	width: 110px;
+	padding: 11px 0;
+	&:hover {
+		color: $betatrek_blue;
+	}
+	&:active {
+		@include linear-gradient(top, #f0f0f0 0%,#b0b0b0 100%);
+	}
+}
+
+/* Default input field styling */
+.defaultInputField {
+	padding: 4px 10px;
+	font-family: Helvetica;
+	color: #777; font-size: 16sp; text-align: center;
+	text-shadow: 0 1px 0 #333;
+	@include box-shadow(inset 0 3px 3px -3px #000);
+	border: none; border-radius: 5px;
+	&:focus {
+		background: #fcfcfc;
+		color: $betatrek_blue;
+		@include box-shadow(
+			inset 0 3px 3px -3px #000, 
+			0 0 3px rgba(255,255,255,0.6));
+	}
+	&:-moz-placeholder {
+		background: #bebebe;
+		color: #fff;
+	}
+	&::-webkit-input-placeholder {
+		color: #A9A9A9;
+	}
+	&:-ms-input-placeholder {
+		color: #A9A9A9;
+	}
+}
+
+/* Form action button styling */
+.formActionButton {
+	width: 55%; padding: 8px 8px 6px;
+	font-family: $helvetica; font-size: 15sp; line-height: 1; color: #fff; 
+	text-shadow: 0 1px 0 #333;
+	background: #979797;
+	border: none; @include border-radius(29px);
+	@include box-shadow( 
+		inset 0 1px 0 1px #000, /* Top shadow */
+		inset 0 -14px 0 0 #7e7e7e); /* Bubble highlight */
+	&:hover {
+		background: #6b94d6;
+		@include box-shadow(
+			inset 0 1px 0 1px #000, /* Top shadow */
+			inset 0 -14px 0 0 #4a8af4/* Bubble highlight */);
+	}
+	&:active {
+		color: #ccc;
+		background: $betatrek_blue;
+		@include box-shadow(inset 0 1px 3px 1px #000); /* Top shadow */
+	} 
 }
 
 /* =============================================================================

@@ -31,22 +31,15 @@
        Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects;
        for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
   <%= javascript_include_tag "modernizr" %>
-  <!-- Add CSRF token to AJAX requests -->
-  <%= javascript_tag do -%>
-    $(document).ajaxSend(function(e, xhr, options) {
-      var token = $("meta[name='csrf-token']").attr("content");
-      xhr.setRequestHeader("X-CSRF-Token", token);
-    });
-  <% end -%>
 </head>
 
 <body class="page liquid">
     <!-- Header bar -->
     <% content_for :first_button do %>
-      <%= render partial: 'shared/header_button', locals: { label: 'sign in', url: '' } %>
+      <%= render partial: 'shared/header_button', locals: { label: 'register', url: '' } %>
     <% end %>
     <% content_for :second_button do %>
-      <%= render partial: 'shared/header_button', locals: { label: 'register', url: '' } %>
+      <%= render partial: 'shared/header_button', locals: { label: 'sign in', url: '' } %>
     <% end %>
     <%= render 'shared/header_bar' %>
 
@@ -55,9 +48,9 @@
     <!-- Body -->
     <div class="body <%= yield :body_extensions %>">
       <div class="main <%= yield :main_extensions %>">
-        <%= yield %>
-        <%= debug params if Rails.env.development? %>   
+        <%= yield %>       
       </div>
+      <%= debug params if Rails.env.development? %> 
     </div>
     <!-- end Body -->
 

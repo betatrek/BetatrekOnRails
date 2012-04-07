@@ -19,3 +19,9 @@
 //= require bootstrap-collapse
 //= require bootstrap-typeahead
 //= require_tree .
+
+// Add CSRF token to AJAX requests
+$(document).ajaxSend(function(e, xhr, options) {
+      var token = $("meta[name='csrf-token']").attr("content");
+      xhr.setRequestHeader("X-CSRF-Token", token);
+});
