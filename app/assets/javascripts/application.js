@@ -18,6 +18,7 @@
 //= require bootstrap-button
 //= require bootstrap-collapse
 //= require bootstrap-typeahead
+//= require modal
 //= require_tree .
 
 // Add CSRF token to AJAX requests

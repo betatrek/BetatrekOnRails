@@ -1,0 +1,29 @@
+<%= form_for user, html: { class: "modalFormPosition" } do |f| %>
+	<span class="whiteAndShadowed niceVerticalSpacing">Create a New Account</span> 
+	<br />
+
+	<%= f.email_field :email, placeholder: 'email', 
+	    class: 'defaultInputField niceVerticalSpacing' %>
+	<br />
+
+	<%= f.password_field :password, placeholder: 'password', 
+	    class: 'defaultInputField niceVerticalSpacing' %>
+	<br />
+
+	<%= f.select :country, ["United States of America"], { include_blank: 'Choose a country...' } %>
+	<br />
+
+	<%= f.select :state, ["California"], { include_blank: 'Choose a state...' } %>
+	<br />
+
+	<span class="whiteAndShadowed niceVerticalSpacing">
+		By creating a new account you agree to our <br/ >
+		<a href='terms-and-conditions.html' class="betatrekLink">terms and conditions</a>
+	</span>
+	<br />
+
+	<a href='#close' class='close' title='Close'>
+		<span class="link">Cancel</span>
+	</a>
+	<%= f.submit "Create Account", class: "formActionButton niceVerticalSpacing" %>	
+<% end %>

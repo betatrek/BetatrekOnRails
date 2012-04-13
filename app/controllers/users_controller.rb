@@ -12,4 +12,13 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def create
+		@user = User.new params[:user]
+		if @user.save
+			sign_into_session @user, permanently: false
+			redirect_to 'new'#portfolio_creation_path
+		else
+			render 'new'
+		end
+	end
 end
