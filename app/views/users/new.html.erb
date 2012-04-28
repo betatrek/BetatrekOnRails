@@ -1,21 +1,21 @@
 <%= render 'shared/dandre' %>
 <% provide :description, 'betatrek sign up page, where new users can register for accounts, and existing users can sign in.' %>
-<% provide :title, 'create account' %>
+<% provide :title, t(:create_account) %>
 <% provide :step, '1' %>
 <% provide :body_extensions, "signupBackgroundColor" %>
 <% provide :main_extensions, "signupBackground" %>
 <!-- For the screen readers -->
-<p class="visuallyhidden">Algorithmic advice no matter the class.</p>
+<p class="visuallyhidden"><%= t :slogan %></p>
 <!-- Sign up form -->
 <form id="signup" class="signupFormPosition" action="/signup">
-	<p class="visuallyhidden">Begin Here</p>
+	<p class="visuallyhidden"><%= t :begin_here %></p>
     <input type="email" name="email" class="defaultInputField niceVerticalSpacing" 
 		   id="signup_email" placeholder="email" />
     <input type="password" name="password" class="defaultInputField niceVerticalSpacing" 
            id="signup_password" maxlength="24" placeholder="password" />
     <button type="submit" name="creation" class="formActionButton niceVerticalSpacing" 
             id="begin_account_creation">
-			Begin!
+			<%= t :begin %>
 	</button>
 </form>
 
@@ -25,6 +25,6 @@
     <div class="betatrekHead betatrekLogo">
       <%= link_to "betatrek", root_path %>
     </div>
-    <%= render 'create_account_form', user: @user %>
+    <%= render 'users/create_account_form', user: @user %>
   </div>
 </div>

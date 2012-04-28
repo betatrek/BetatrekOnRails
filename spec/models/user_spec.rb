@@ -22,7 +22,7 @@ require 'spec_helper'
 describe User do
 
 	before { @user = User.new name: "Example User", email: "user@example.com", 
-							  password: "password", country: "USA", state: "California" }
+							  password: "password", country: "United States of America", state: "California" }
 
 	subject { @user }
 
@@ -91,6 +91,47 @@ describe User do
 		describe "with a password that's too short" do
 			before { @user.password = "a" * 5 } 
 			it { should_not be_valid }
+		end
+
+		describe "when country is not present" do
+			before { @user.country = " " }
+			it { should_not be_valid }
+		end
+
+		describe "when country format is invalid" do
+			invalid_countries = %w[Finite Rock usa Im]
+			invalid_countries.each do |invalid_countries|
+				before { @user.country = invalid_countries }
+				it { should_not be_valid }
+			end
+		end
+
+		describe "when country format is valid" do
+			User::COUNTRIES.each do |valid_country|
+				before { @user.country = valid_country }
+				it { should be_valid }
+			end
+		end
+
+		describe "when state is not present" do
+			before { @user.state = " " }
+			it { should_not be_valid }
+		end
+
+		describe "when state format is invalid" do
+			invalid_states = %w[Finite Rock arz]
+			invalid_states.each do |invalid_state|
+				before { @user.state = invalid_state }
+				it { should_not be_valid }
+			end
+		end
+
+		describe "when state format is valid" do
+			valid_states = %w[California Arizona Georgia]
+			User::STATES.each do |valid_state|
+				before { @user.state = valid_state }
+				it { should be_valid }
+			end
 		end
 	end
 

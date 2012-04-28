@@ -13,3 +13,8 @@ def fill_signup_form_with_valid_information
 	select  'United States of America', from: 'user_country'
 	select  'California',               from: 'user_state'
 end
+
+def fill_signup_form_with_invalid_information
+	fill_in 'user_email',    with: "user@example"
+	fill_in 'user_password', with: "pass"  	
+end

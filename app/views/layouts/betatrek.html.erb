@@ -36,18 +36,32 @@
 <body class="page liquid">
     <!-- Header bar -->
     <% content_for :first_button do %>
-      <%= render partial: 'shared/header_button', locals: { label: 'register', url: '' } %>
+      <%= render partial: 'shared/header_button', locals: { label: t(:register), url: '' } %>
     <% end %>
     <% content_for :second_button do %>
-      <%= render partial: 'shared/header_button', locals: { label: 'sign in', url: '' } %>
+      <% if signed_in? %>
+        <%= render partial: 'shared/header_button', locals: { label: t(:sign_out), url: '' } %>
+      <% else %>
+        <%= render partial: 'shared/header_button', locals: { label: t(:sign_in), url: '' } %>
+      <% end %>
     <% end %>
     <%= render 'shared/header_bar' %>
 
     <!-- Progress bar (don't forget to provide a :step) -->
-    <%= render 'shared/account_creation_progress_bar' %>
+    <!--<%= render 'shared/account_creation_progress_bar' %>-->
+
     <!-- Body -->
     <div class="body <%= yield :body_extensions %>">
-      <div class="main <%= yield :main_extensions %>">
+      <!-- Messaging -->
+      <div id="messages">
+        <% flash.each do |key, value| %>
+          <%= content_tag :div, class: "alert alert-#{key}" do -%>
+            <%= value %> <a class="close" data-dismiss="alert" href="#">&times;</a>
+          <% end -%>
+        <% end %>
+        <%= render 'shared/error_messages', object: @user %>
+      </div>
+      <div class="main <%= yield :main_extensions %>">  
         <%= yield %>       
       </div>
       <%= debug params if Rails.env.development? %> 

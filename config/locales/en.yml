@@ -2,4 +2,18 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  hello: "Hello worlds"
+  create_account: "create account"
+  slogan: "Algorithmic advice no matter the class"
+  begin_here: "Begin Here"
+  begin: "Begin!"
+  register: "register"
+  sign_out: "sign out"
+  sign_in: "sign in"
+  create_account_prompt: "Create a New Account"
+  country_prompt: "Choose a country..."
+  state_prompt: "Choose a state..."
+  agreement_prompt: "By creating a new account you agree to our "
+  tos: "terms of service"
+  cancel: "Cancel"
+  create_account_button: "Create Account"

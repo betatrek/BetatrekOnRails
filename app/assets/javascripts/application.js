@@ -18,7 +18,9 @@
 //= require bootstrap-button
 //= require bootstrap-collapse
 //= require bootstrap-typeahead
+//= require rails.validations
 //= require modal
+//= require autoscroll
 //= require_tree .
 
 // Add CSRF token to AJAX requests

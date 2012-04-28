@@ -5,11 +5,14 @@ BetatrekOnRails::Application.routes.draw do
 
   root to: 'rsvps#new'
 
-  match '/signup', to: 'users#new'
+  match '/dashboard', to: 'static_pages#dashboard'
+
+  match '/signup', to: 'static_pages#signup'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/rsvp/:uid/:confirmation_code', to: 'rsvps#confirm', via: [:put, :get], as: :confirm
+  match 'user/:uid/:confirmation_code', to: 'users#confirm', via: [:put, :get], as: :user_confirm
 
   match '/help', to: 'static_pages#help'
 

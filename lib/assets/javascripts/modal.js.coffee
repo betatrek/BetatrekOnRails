@@ -11,22 +11,22 @@ window.bindModalToLink = ($link, $modal, $body, $initializer) ->
           $modal.addClass 'active'
        , 50
 
-       $modal.find('.close').click (evt) ->
+       $modal.find('.dismiss').click (evt) ->
           evt.preventDefault()
-          close()
+          dismiss()
 
-       $modal.find('form').submit (evt) -> close()
+       $modal.find('form').submit (evt) -> dismiss()
 
        $body.keyup (evt) ->
           if evt.keyCode is 27 # ESC key
-             close()
+             dismiss()
             
-    close = ->
+    dismiss = ->
            $modal.addClass 'minimize'
            $modal.removeClass 'active' 
            setTimeout ->
                $modal.removeClass 'intermediate minimize'
            , 550
            $body.unbind 'keyup'
-           $modal.find('.close').unbind 'click'
+           $modal.find('.dismiss').unbind 'click'
     return

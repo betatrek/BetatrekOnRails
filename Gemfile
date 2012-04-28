@@ -9,7 +9,7 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.5'
 gem 'bourbon'
-gem 'client_side_validations'
+gem 'client_side_validations', '~> 3.1.4'
 gem 'mail'
 gem 'newrelic_rpm'
 gem 'dalli'
@@ -18,6 +18,12 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 # state_machine adds support for creating state machines for attributes
 gem 'state_machine', '~>1.1.2'
+# Localization data
+gem 'rails-i18n'
+# Country localization data
+gem 'i18n-country-translations'
+# Will paginate localization data
+gem 'will-paginate-i18n'
 
 group :development do
   gem 'annotate', '~> 2.4.1.beta'
@@ -43,6 +49,8 @@ group :test do
   # Bundler guard allows to automatically & intelligently install/update bundle when needed
   gem 'guard-bundler'
   gem 'factory_girl_rails', '1.4.0'
+  # DatabaseCleaner to keep them test databases clean for consistent testing behavior
+  gem 'database_cleaner', '~> 0.7.1'
 end
 
 # To use Jbuilder templates for JSON

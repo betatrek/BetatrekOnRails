@@ -33,37 +33,34 @@
 }
 
 /* Creates a closing "X" button */
-.modal .close {
-	text-decoration: none;
-	&:after {
-		position: absolute; top: -1em; right: -.75em; width: 1.5em; padding: 3px 1px 1px 2px;
-		display: block;
-		content: '\00d7';
-		font-size: 16px; text-decoration: none; text-align: center; font-weight: bold;
-		color: #fff;
-		text-shadow: none;
-		background: #000;
-		border: 3px solid #fff;
-		@include border-radius(50%);
-		@include box-shadow(0 1px 3px rgba(0,0,0,0.5));
-	}
+.modal .dismiss:after {
+	position: absolute; top: -1em; right: -.75em; width: 1.3em; padding: 3px 1px 1px 2px;
+	display: block;
+	content: '\00d7';
+	font-size: 16px; text-decoration: none; text-align: center; font-weight: bold;
+	color: #fff;
+	text-shadow: none;
+	background: #000;
+	border: 3px solid #fff;
+	@include border-radius(50%);
+	@include box-shadow(0 1px 3px rgba(0,0,0,0.5));
 }
-.modal .close .link {
+.modal .dismiss .link {
 	color: #979797;
 	text-decoration: underline;
 	&:hover {
 		color: $betatrek_blue;
 	}
 }
-.ie8 .modal .close:after {
+.ie8 .modal .dismiss:after {
 	display: none;
 }
-.modal .close:focus:after {
+.modal .dismiss:focus:after {
 	outline: 1px solid #000;
 }
 
 /* Sets up the closing "X" button animation */
-.modal .close:focus:after, .modal .close:hover:after {
+.modal .dismiss:focus:after, .modal .dismiss:hover:after {
 	-webkit-transform: scale3d(1.1,1.1,1);
 	-moz-transform: scale(1.1,1.1);
 }

@@ -1,0 +1,2 @@
+$('#messages').html('<% flash.each do |key, value| %><%= content_tag :div, class: "alert alert-#{key}" do -%><%= value %> <a class="close" data-dismiss="alert" href="#">&times;</a><% end -%><% end %><%= escape_javascript render("shared/error_messages", object: @user) %>');
+scrollToElement($('#messages'));
