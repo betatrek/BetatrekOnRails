@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   layout :choose_layout
+  before_filter :authenticate, only: [:signup, :dashboard]
 
   # Root page, redirects user to the RSVP page until further notice
   def home
