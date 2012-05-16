@@ -24,6 +24,8 @@ gem 'rails-i18n'
 gem 'i18n-country-translations'
 # Will paginate localization data
 gem 'will-paginate-i18n'
+# Model based ruby authentication
+#gem 'authlogic'
 
 group :development do
   gem 'annotate', '~> 2.4.1.beta'

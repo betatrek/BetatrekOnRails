@@ -35,15 +35,20 @@
 
 <body class="page liquid">
     <!-- Header bar -->
-    <% content_for :first_button do %>
-      <%= render partial: 'shared/header_button', locals: { label: t(:register), url: '' } %>
-    <% end %>
-    <% content_for :second_button do %>
-      <% if signed_in? %>
-        <%= render partial: 'shared/header_button', locals: { label: t(:sign_out), url: '' } %>
+    <% if signed_in? %>
+        <% content_for :first_button do %>
+          <%= render partial: 'shared/header_button', locals: { label: t(:sign_out), url: '' } %>
+        <% end %>
       <% else %>
-        <%= render partial: 'shared/header_button', locals: { label: t(:sign_in), url: '' } %>
-      <% end %>
+        <% content_for :first_button do %>
+          <%= render partial: 'shared/header_button', locals: { label: t(:register), url: '' } %>
+        <% end %>
+        <% content_for :second_button do %>
+          <%= render partial: 'shared/sign_in_form' %>
+        <% end %>
+        <% content_for :third_button do %>
+          <%= render partial: 'shared/header_button', locals: { label: t(:sign_in), url: '', id: 'sign_in_button' } %>
+        <% end %>
     <% end %>
     <%= render 'shared/header_bar' %>
 

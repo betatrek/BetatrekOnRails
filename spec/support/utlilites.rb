@@ -18,3 +18,8 @@ def fill_signup_form_with_invalid_information
 	fill_in 'user_email',    with: "user@example"
 	fill_in 'user_password', with: "pass"  	
 end
+
+def fill_signin_form_for user
+	fill_in 'email', with: user.email
+	fill_in 'password', with: user.password 
+end

@@ -18,13 +18,14 @@ class StaticPagesController < ApplicationController
 
   # Runs before rendering the user dashboard
   def dashboard
+    @user = current_user
   end
 
   private
 
     # Specfies the layout to use based on which action was called
     def choose_layout    
-      if [ 'signup', 'login' ].include? action_name
+      if [ 'signup', 'login', 'dashboard' ].include? action_name
         'betatrek'
       else
         'application'

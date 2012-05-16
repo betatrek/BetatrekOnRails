@@ -1,0 +1,7 @@
+<%= form_tag sessions_path, id: "sign_in_form" do %>
+	<%= text_field_tag :email, params[:email], placeholder: t(:email), 
+	                   class: 'defaultInputField' %>
+
+	<%= password_field_tag :password, params[:password], placeholder: t(:password), 
+	                       class: 'defaultInputField' %>
+<% end %>

@@ -17,3 +17,7 @@ en:
   tos: "terms of service"
   cancel: "Cancel"
   create_account_button: "Create Account"
+  connecting: "connecting.."
+  email: "email"
+  password: "password"
+  invalid_credentials: "Invalid email/password combination"
