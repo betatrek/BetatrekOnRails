@@ -1,5 +1,6 @@
 <% id ||= "" %>
-<%= link_to url, class: "betatrekLink", id: id do %>
+<% method ||= "get" %>
+<%= link_to url, class: "betatrekLink", id: id, method: method do %>
 	<div class="ovalContainer ovalButton">
 		<div class="inner">
 			<%= label %>

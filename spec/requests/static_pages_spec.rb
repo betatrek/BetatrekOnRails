@@ -11,7 +11,7 @@ describe "StaticPages" do
 	end
 
 	describe "Sign up page" do
-		before { visit signup_path}
+		before { visit signup_path }
 
 		describe "account sign in" do
 			let(:user) { FactoryGirl.create :user }
@@ -34,6 +34,18 @@ describe "StaticPages" do
 
 				it { should_not have_content 'sign out' }
 			end	
+		end
+
+		describe "signing out" do
+			let(:user) { FactoryGirl.create :user }
+			before do
+				visit signup_path
+				fill_signin_form_for user
+				click_on 'sign in'
+				click_on 'sign out'
+			end
+
+			it { should have_content 'sign in' }
 		end
 	end
 end

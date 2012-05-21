@@ -37,7 +37,7 @@
     <!-- Header bar -->
     <% if signed_in? %>
         <% content_for :first_button do %>
-          <%= render partial: 'shared/header_button', locals: { label: t(:sign_out), url: '' } %>
+          <%= render partial: 'shared/header_button', locals: { label: t(:sign_out), url: signout_path, method: "delete" } %>
         <% end %>
       <% else %>
         <% content_for :first_button do %>
