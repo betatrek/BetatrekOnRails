@@ -1,0 +1,86 @@
+<!-- Navigation bar -->
+<div class="sidebar">
+	<aside id="welcome">
+    <%= t :welcome %><%= link_to " " + @user.name, "", id: "name" %>
+  </aside>
+  <nav>
+  	<!-- Wrapped each group so hover animation can occur on a group -->
+      <ul>
+        <!-- Home -->
+        <div>
+        <a href="#"><li>
+          <div class="arrow"></div>
+          <%= t :Home %>
+        </li></a>
+          <ul class="subnav">
+              <li><a href="#"><%= t :Invesment_Feeds %></a></li>
+              <li><a href="#"><%= t :Messages %></a></li>
+          </ul>
+        </div>
+
+        <!-- Portfolio Overview -->
+        <div>
+        <a href="#"><li>
+          <div class="arrow"></div>
+          <%= t :portolio_overview %>
+        </li></a>
+          <ul class="subnav">
+              <!-- <li><a href="#"><%= t :Home %></a></li> -->
+              <li><a href="#"><%= t :Equities %></a></li>
+              <li><a href="#"><%= t :Mutual_Funds %></a></li>
+              <li><a href="#"><%= t :ETF %></a></li>
+              <li><a href="#"><%= t :Real_Estate %></a></li>
+              <li><a href="#"><%= t :Fixed_Income %></a></li>
+              <li><a href="#"><%= t :Cash_Equivilants %></a></li>
+              <li><a href="#"><%= t :Other_Investments %></a></li>
+          </ul>
+        </div>
+
+        <div>
+        <a href="#"><li>
+          <div class="arrow"></div>
+          <%= t :Investment_Analysis %>
+        </li></a>
+          <ul class="subnav">
+              <!-- <li><a href="#"><%= t :Advice_Feed %></a></li> -->
+              <li><a href="#"><%= t :Equities %></a></li>
+              <li><a href="#"><%= t :Mutual_Funds %></a></li>
+              <li><a href="#"><%= t :ETF %></a></li>
+              <li><a href="#"><%= t :Real_Estate %></a></li>
+              <li><a href="#"><%= t :Fixed_Income %></a></li>
+              <li><a href="#"><%= t :Cash_Equivilants %></a></li>
+              <li><a href="#"><%= t :Other_Investments %></a></li>
+          </ul>
+        </div>
+
+        <div>
+        <a href="#"><li>
+          <div class="arrow"></div>
+          <%= t :Market_Research %>
+        </li></a>
+          <ul class="subnav">
+              <li><a href="#"><%= t :Portfolio_News %></a></li>
+              <li><a href="#"><%= t :Top_News %></a></li>
+              <li><a href="#"><%= t :US_Economy %></a></li>
+              <li><a href="#"><%= t :Global_Markets %></a></li>
+          </ul>
+        </div>
+
+        <div>
+        <a href="#"><li>
+          <div class="arrow"></div>
+          <%= t :Beyond_Investing %>
+        </li></a>
+          <ul class="subnav">
+              <li><a href="#"><%= t :Developing_Markets %></a></li>
+              <li><a href="#"><%= t :Charity %></a></li>
+              <li><a href="#"><%= t :Adventures %></a></li>
+          </ul>
+        </div>
+      </ul>
+  </nav>
+<!-- .sidebar --></div>
+
+<!-- Graph -->
+<!--Div that will hold the pie chart-->
+<div id="chart_div" style="width:400; height:300"></div>

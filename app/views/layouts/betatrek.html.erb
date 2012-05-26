@@ -74,6 +74,32 @@
     <!-- end Body -->
 
   <!-- JavaScript at the bottom for fast page loading -->
+  <!-- Google Visualization API -->
+  <%= javascript_include_tag "https://www.google.com/jsapi" %>
+  <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+  <script type="text/javascript" defer>
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  1660,       1120],
+          ['2007',  2030,      540]
+        ]);
+
+        var options = {
+          title: 'BetaTrek Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: 'blue'}},
+          width: 400,
+          height: 300
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
   <%= javascript_include_tag "application", defer: 'defer' %>
   <!-- end scripts -->
 

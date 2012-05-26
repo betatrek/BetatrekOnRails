@@ -21,6 +21,7 @@
 //= require rails.validations
 //= require modal
 //= require autoscroll
+//= require navigation
 //= require_tree .
 
 // Add CSRF token to AJAX requests
