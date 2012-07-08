@@ -1,7 +1,7 @@
 <?php
-include_once '../include/user.php';
-include_once '../include/ticker.php';
-include '../include/getWebData.php';
+include_once './include/user.php';
+include_once './include/ticker.php';
+include './include/getWebData.php';
 
 $nasdaq_file = "TKR_NASDAQ";
 $lines = split("\n", file_get_contents($nasdaq_file));
