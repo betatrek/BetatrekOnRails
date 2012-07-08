@@ -12,7 +12,7 @@ function getGoogleTickerData($ticker) {
     $asset = new Asset();
 
     $url = "http://www.google.com/finance?q=".$ticker;
-    $gf_page = "../../data/".$ticker."_gf.html";
+    $gf_page = "data/".$ticker."_gf.html";
 
     print "$url\n";
     /* Gt the data from google finance */
