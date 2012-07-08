@@ -1,5 +1,10 @@
+<%= render 'shared/dandre' %>
+<% provide :description, 'betatrek dashboard' %>
+<% provide :title, t(:dashboard) %>
+<% provide :body_extensions, "darkBackground matchHeight" %>
+<% provide :main_extensions, "matchHeight" %>
 <!-- Navigation bar -->
-<div class="sidebar">
+<div class="leftCol gCal"><!-- sidebar -->
 	<aside id="welcome">
     <%= t :welcome %><%= link_to " " + @user.name, "", id: "name" %>
   </aside>
@@ -25,7 +30,6 @@
           <%= t :portolio_overview %>
         </li></a>
           <ul class="subnav">
-              <!-- <li><a href="#"><%= t :Home %></a></li> -->
               <li><a href="#"><%= t :Equities %></a></li>
               <li><a href="#"><%= t :Mutual_Funds %></a></li>
               <li><a href="#"><%= t :ETF %></a></li>
@@ -42,7 +46,6 @@
           <%= t :Investment_Analysis %>
         </li></a>
           <ul class="subnav">
-              <!-- <li><a href="#"><%= t :Advice_Feed %></a></li> -->
               <li><a href="#"><%= t :Equities %></a></li>
               <li><a href="#"><%= t :Mutual_Funds %></a></li>
               <li><a href="#"><%= t :ETF %></a></li>
@@ -81,6 +84,84 @@
   </nav>
 <!-- .sidebar --></div>
 
-<!-- Graph -->
-<!--Div that will hold the pie chart-->
-<div id="chart_div" style="width:400; height:300"></div>
+<div class="main matchHeight">
+  <!-- Search bar -->
+  <input type="search" class="defaultInputField" placeholder="<%= t :search_investments %>" /> 
+
+  <div class="matchHeight lightBackground topLeftRounded">
+    <!-- Right column -->
+    <div id="column_content" class="rightCol betatrekAnalytics">
+      <h2>Betatrek Analytics</h2>
+      <div class="line">
+        <div class="unit size1of2 blueBorder lightBlueBackground blue centerJustified verticalCenterJustified uppercase nicePadding">
+          beta
+        </div>
+        <div class="unit size1of2 lastUnit blueBorder lightBlueBackground blue centerJustified verticalCenterJustified uppercase nicePadding">
+          exp return (CAPM)  
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="unit size1of2 blueBorder whiteBackground centerJustified verticalCenterJustified nicePadding">
+          1.17
+        </div>
+        <div class="unit size1of2 lastUnit blueBorder whiteBackground centerJustified verticalCenterJustified nicePadding">
+          5.03%
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="unit size1of2 blueBorder lightBlueBackground blue centerJustified verticalCenterJustified uppercase nicePadding">
+          sharpe ratio
+        </div>
+        <div class="unit size1of2 lastUnit blueBorder lightBlueBackground blue centerJustified verticalCenterJustified uppercase nicePadding">
+          sharpe ratio trend 
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="unit size1of2 blueBorder whiteBackground centerJustified verticalCenterJustified nicePadding">
+          .92
+        </div>
+        <div class="unit size1of2 lastUnit blueBorder whiteBackground centerJustified verticalCenterJustified nicePadding">
+          &uarr; <!-- &darr; -->  
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="unit size1of2 blueBorder lightBlueBackground whiteBackground blue centerJustified verticalCenterJustified uppercase nicePadding">
+          quantitative value
+        </div>
+        <div class="unit size1of2 lastUnit blueBorder lightBlueBackground whiteBackground blue centerJustified verticalCenterJustified uppercase nicePadding">
+          fundamental value 
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="unit size1of2 blueBorder whiteBackground centerJustified verticalCenterJustified nicePadding">
+          600.14
+        </div>
+        <div class="unit size1of2 lastUnit blueBorder whiteBackground centerJustified verticalCenterJustified nicePadding">
+          600.14 
+        </div>
+      </div>
+    </div>
+    <!-- end Right column -->
+
+    <!-- Dashboard content -->
+    <div id="dashboard_content" class="main stretchHeight">
+      <h2 class="title">BetaTrek Inc. (BETTA)</h2>
+      <!-- Graph -->
+      <!-- Div that will hold the graph -->
+      <div id="graph" class="dashboard-graph blueBorder" style="width: 100%">
+        <div id="chart" style="width: 100%; height: 300px;"></div>
+        <div id="chart-range" style="width: 100%; height: 50px;"></div>
+      </div>
+
+      <h2>Current Price</h2>
+      <h3>590.49 &nbsp; &nbsp; &nbsp; +6.82 (1.17%)</h3>
+      <p>Google Inc. (Google) is focused on improving the ways people connect with information. The Company generates revenue primarily by delivering online advertising. The Company focuses on areas, such as search, advertising, operating systems and platforms, and enterprise. Businesses use its AdWords program to promote their products and services with targeted advertising. In addition, the third parties that comprise the Google Network use its AdSence program to deliver relevant ads that generate revenue and enhance the user experience. In February 2010, the Company acquired Aardvar and On2 Technologies, Inc. In May 2010, The Company acquired AdMob, Inc. (AdMob). In August 2010, the Company acquired Slide, Inc. (Slide). In Decemeber 2010, the Company acquired Widevine Technologies, Inc. (Widevine). In April 2011, the Company acquired PushLife. In September 2011, the Company acquired Zagat.</p>
+    </div>
+    <!-- end Dashboard content -->
+  </div>
+</div>

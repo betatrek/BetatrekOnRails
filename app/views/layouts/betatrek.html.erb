@@ -76,30 +76,116 @@
   <!-- JavaScript at the bottom for fast page loading -->
   <!-- Google Visualization API -->
   <%= javascript_include_tag "https://www.google.com/jsapi" %>
-  <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
   <script type="text/javascript" defer>
-      google.load("visualization", "1", {packages:["corechart"]});
+      google.load("visualization", "1.1", { packages: ["corechart", "controls"] });
+      function drawVisualization() {
+        var dashboard = new google.visualization.Dashboard(
+             document.getElementById('graph'));
+      
+         var control = new google.visualization.ControlWrapper({
+           'controlType': 'ChartRangeFilter',
+           'containerId': 'chart-range',
+           'options': {
+             // Filter by the date axis.
+             'filterColumnIndex': 0,
+             'ui': {
+               'chartType': 'AreaChart',
+               'chartOptions': {
+                 'chartArea': {'width': '100%'},
+                 'hAxis': {'baselineColor': 'none'},
+                 'backgroundColor': '#f3f3f3'
+               },
+               // Display a single series that shows the closing value of the stock.
+               // Thus, this view has two columns: the date (axis) and the stock value (line series).
+               'chartView': {
+                 'columns': [0, 3]
+               },
+               // 1 day in milliseconds = 24 * 60 * 60 * 1000 = 86,400,000
+               'minRangeSize': 86400000
+             }
+           },
+           // Initial range: 2012-02-09 to 2012-03-20.
+           'state': {'range': {'start': new Date(2012, 1, 9), 'end': new Date(2012, 2, 20)}}
+         });
+        
+         var chart = new google.visualization.ChartWrapper({
+           'chartType': 'AreaChart',
+           'containerId': 'chart',
+           'options': {
+             // Use the same chart area width as the control for axis alignment.
+             'chartArea': {'height': '80%', 'width': '100%'},
+             'hAxis': {'slantedText': false},
+             'vAxis': {'viewWindow': {'min': 0, 'max': 2000}, 'textPosition': 'in', 'format': '$#,###,###,###'},
+             'legend': {'position': 'none'},
+             'backgroundColor': '#f3f3f3'
+           },
+           // Convert the first column from 'date' to 'string'.
+           'view': {
+             'columns': [
+               {
+                 'calc': function(dataTable, rowIndex) {
+                   return dataTable.getFormattedValue(rowIndex, 0);
+                 },
+                 'type': 'string'
+               }, 3]
+           }
+         });
+      
+         var data = new google.visualization.DataTable();
+         data.addColumn('date', 'Date');
+         data.addColumn('number', 'Stock low');
+         data.addColumn('number', 'Stock open');
+         data.addColumn('number', 'Stock close');
+         data.addColumn('number', 'Stock high');
+      
+         // Create random stock values, just like it works in reality.
+         var open, close = 300;
+         var low, high;
+         for (var day = 1; day < 121; ++day) {
+           var change = (Math.sin(day / 2.5 + Math.PI) + Math.sin(day / 3) - Math.cos(day * 0.7)) * 150;
+           change = change >= 0 ? change + 10 : change - 10;
+           open = close;
+           close = Math.max(50, open + change);
+           low = Math.min(open, close) - (Math.cos(day * 1.7) + 1) * 15;
+           low = Math.max(0, low);
+           high = Math.max(open, close) + (Math.cos(day * 1.3) + 1) * 15;
+           var date = new Date(2012, 0 ,day);
+           data.addRow([date, Math.round(low), Math.round(open), Math.round(close), Math.round(high)]);
+         }
+      
+         dashboard.bind(control, chart);
+         dashboard.draw(data);
+      }
+      
+
+      google.setOnLoadCallback(drawVisualization);
+    </script>
+
+    <!--<script type='text/javascript'>
+      google.load('visualization', '1', {'packages':['annotatedtimeline']});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  1660,       1120],
-          ['2007',  2030,      540]
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', 'Date');
+        data.addColumn('number', 'Sold Pencils');
+        data.addColumn('string', 'title1');
+        data.addColumn('string', 'text1');
+        data.addColumn('number', 'Sold Pens');
+        data.addColumn('string', 'title2');
+        data.addColumn('string', 'text2');
+        data.addRows([
+          [new Date(2008, 1 ,1), 30000, undefined, undefined, 40645, undefined, undefined],
+          [new Date(2008, 1 ,2), 14045, undefined, undefined, 20374, undefined, undefined],
+          [new Date(2008, 1 ,3), 55022, undefined, undefined, 50766, undefined, undefined],
+          [new Date(2008, 1 ,4), 75284, undefined, undefined, 14334, 'Out of Stock','Ran out of stock on pens at 4pm'],
+          [new Date(2008, 1 ,5), 41476, 'Bought Pens','Bought 200k pens', 66467, undefined, undefined],
+          [new Date(2008, 1 ,6), 33322, undefined, undefined, 39463, undefined, undefined]
         ]);
 
-        var options = {
-          title: 'BetaTrek Performance',
-          hAxis: {title: 'Year',  titleTextStyle: {color: 'blue'}},
-          width: 400,
-          height: 300
-        };
-
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
+        var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('chart_div'));
+        chart.draw(data, {displayAnnotations: false, options: {'wmode': 'transparent'}});
       }
-    </script>
+    </script>-->
   <%= javascript_include_tag "application", defer: 'defer' %>
   <!-- end scripts -->
 

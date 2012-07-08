@@ -4,6 +4,10 @@
    ========================================================================== */
 @import "base";
 
+html, body {
+	height: 100%;
+}
+
 input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 	color: $dark_gray;
 }
@@ -51,17 +55,46 @@ input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::
 	}
 }
 
-.darkBackground {
-	background: $dark_gray;
-}
+.whiteBackground { background: #ffffff; }
+
+.darkBackground { background: $dark_gray; }
+
+.lightBackground { background: #f3f3f3; }
+
+.lightBlueBackground { background: #dbe9f4; }
+
+.centerJustified { text-align: center; }
 
 .centered { margin: 0 auto; }
+
+.matchHeight { height: 100%; }
+
+.stretchHeight { min-height: 100%; }
 
 .noBorder { border: none; }
 
 .rounded { @include border-radius(5px); }
 
+.topLeftRounded { @include border-top-left-radius(15px); }
+
 .noBullets { list-style: none; }
+
+.blueBorder { border: 1px solid $betatrek_blue; }
+
+.uppercase { text-transform: uppercase; }
+
+.blue { color: $betatrek_blue; }
+
+.verticalCenterJustifiedContainer { 
+	display: table; 
+}
+
+.verticalCenterJustifiedContent {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.nicePadding { padding: 4px; }
 
 /* Creates a triangle using border transparency */
 .triangle {
