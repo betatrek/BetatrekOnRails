@@ -1,0 +1,86 @@
+<?php
+include('simple_html_dom.php');
+include_once 'asset.php';
+include_once 'db.php';
+
+/************************************
+ Retrieves the Google Finance data for the given ticker and stores it in the
+ asset database.
+ @param $ticker the given String ticker symbol 
+ ************************************/
+function getGoogleTickerData($ticker) {
+    $asset = new Asset();
+
+    $url = "http://www.google.com/finance?q=".$ticker;
+    $gf_page = "../../data/".$ticker."_gf.html";
+
+    print "$url\n";
+    /* Gt the data from google finance */
+    system("curl --silent -o $gf_page \"$url\"");
+
+    /************************************
+     Create HTML DOM object 
+     ************************************/
+    $html = file_get_html($gf_page);
+
+    /************************************
+     Extract the required data 
+     ************************************/
+    // Find the information tables
+    $snap_data0 = $html->find('table.snap-data', 0);
+    $snap_data1 = $html->find('table.snap-data', 1);
+    
+    // Print these tables
+    foreach($snap_data0->find('tr') as $row){
+        print "\n";
+
+        foreach($row->find('td') as $cell) {
+            // push the cell's text to the array
+            print "$cell->innertext";
+        }
+
+        $row_data = $row->find('td', 1);
+        print $row_data->innertext;
+    }
+    print "\n";
+
+    foreach($snap_data1->find('tr') as $row){
+        print "\n";
+
+        foreach($row->find('td') as $cell) {
+            // push the cell's text to the array
+            print "$cell->innertext";
+        }
+
+        $row_data = $row->find('td', 1);
+        print $row_data->innertext;
+    }
+    print "\n";
+    print "\n";
+
+    // Find the current evaluation
+    $current_evaluation = $html->find('span[class=pr]', 0)->plaintext;
+
+    // Extract snapdata 
+    $range = $snap_data0->find('tr', 0)->find('td', 1)->plaintext;
+    $range_52 = $snap_data0->find('tr', 1)->find('td', 1)->plaintext;
+    $open = $snap_data0->find('tr', 2)->find('td', 1)->plaintext;
+    $volume = $snap_data0->find('tr', 3)->find('td', 1)->plaintext;
+    $mkt_cap = $snap_data0->find('tr', 4)->find('td', 1)->plaintext;
+    $PE = $snap_data0->find('tr', 5)->find('td', 1)->plaintext;
+
+    $div_yield = $snap_data1->find('tr', 0)->find('td', 1)->plaintext;
+    $EPS = $snap_data1->find('tr', 1)->find('td', 1)->plaintext;
+    $shares = $snap_data1->find('tr', 2)->find('td', 1)->plaintext;
+    $beta = $snap_data1->find('tr', 3)->find('td', 1)->plaintext;
+    $inst_own = $snap_data1->find('tr', 4)->find('td', 1)->plaintext;
+
+    /* Insert the data into database. */
+    $asset->ticker = $ticker;
+    $asset->evaluation = floatval($current_evaluation);
+    $asset->volume = intval($volume);
+    $asset->mkt_cap = intval($mkt_cap);
+    $asset->beta = floatval($beta);
+    insertAsset($asset);
+}
+?>
