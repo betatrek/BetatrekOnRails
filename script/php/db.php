@@ -14,6 +14,7 @@ function connect_to_database() {
  @param $asset The given Asset object 
  ***************************************/                           
 function insertAsset($asset) {
+    global $db_conn;
     // Execute the insert with the given asset
     $result = pg_execute($db_conn, "insert", array($asset->ticker, 
                          $asset->evaluation, $asset->volume, 

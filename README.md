@@ -36,6 +36,7 @@ This is the source code for [*betatrek.com*](http://www.betatrek.com)
 * List currently defined routes with `rake routes`
 * When you migrate a database, use `annotate --position before` to add/update annotations in the corresponding model files
 * Generate new mailers with `rails g mailer **name**`
+* Generate a new migration with `rails g migration **name**`
 
 # Deployment
 1. Commit your changes to your local repository
@@ -46,8 +47,9 @@ This is the source code for [*betatrek.com*](http://www.betatrek.com)
 	* First time (new app on the server): `cap deploy:setup` to set up the directories on the server. Then `cap deploy:cold` to deploy the app on the server
 	* If you're just changing code or configuration: `cap deploy`
 	* If you're just migrating a database: `cap deploy:migrate`
-	* If you're changing code and migrating: `cap deploy:migration`
+	* If you're changing code and migrating: `cap deploy:migrations`
 	* You can run commands on the server with `cap invoke COMMAND="**Command**"
+	* http://capitate.rubyforge.org/recipes/deploy.html for general deployment recipe documentation
 	* **ssh-agent forwarding**
 		** To start you're ssh-agent you can use: "exec `ssh-agent`"
 		** Then to add you're default id_rsa.pub key: "ssh-add"

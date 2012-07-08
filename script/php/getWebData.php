@@ -31,32 +31,36 @@ function getGoogleTickerData($ticker) {
     $snap_data1 = $html->find('table.snap-data', 1);
     
     // Print these tables
-    foreach($snap_data0->find('tr') as $row){
-        print "\n";
+    if (is_object($snap_data0)) {
+        foreach($snap_data0->find('tr') as $row) {
+            print "\n";
 
-        foreach($row->find('td') as $cell) {
-            // push the cell's text to the array
-            print "$cell->innertext";
+            foreach($row->find('td') as $cell) {
+                // push the cell's text to the array
+                print "$cell->innertext";
+            }
+
+            $row_data = $row->find('td', 1);
+            print $row_data->innertext;
         }
-
-        $row_data = $row->find('td', 1);
-        print $row_data->innertext;
-    }
-    print "\n";
-
-    foreach($snap_data1->find('tr') as $row){
         print "\n";
+    } else { return; }
 
-        foreach($row->find('td') as $cell) {
-            // push the cell's text to the array
-            print "$cell->innertext";
+    if (is_object($snap_data1)) {
+        foreach($snap_data1->find('tr') as $row) {
+            print "\n";
+
+            foreach($row->find('td') as $cell) {
+                // push the cell's text to the array
+                print "$cell->innertext";
+            }
+
+            $row_data = $row->find('td', 1);
+            print $row_data->innertext;
         }
-
-        $row_data = $row->find('td', 1);
-        print $row_data->innertext;
-    }
-    print "\n";
-    print "\n";
+        print "\n";
+        print "\n";
+    } else { return; }
 
     // Find the current evaluation
     $current_evaluation = $html->find('span[class=pr]', 0)->plaintext;
