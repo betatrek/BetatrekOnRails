@@ -32,12 +32,14 @@ function insertAsset($asset) {
 **************************************/
 function insertHistoricalAsset($asset) {
     global $db_conn;
+    // Clear our results
+    while (pg_get_result()) {}
     // Execute the insert with the given asset
     $result = pg_execute($db_conn, "insert-historical", $asset);
 
     if ($result === false) {
         print "Error inserting historical asset " . pg_last_error();
-    } 
+    }
 }
 
 /*************************************
@@ -52,9 +54,14 @@ function close_database_connection() {
 $db_conn;
 connect_to_database();
 
+// Clear our results
+while (pg_get_result()) {}
 // Prepare inserts for execution
-pg_send_prepare($db_conn, "insert-asset", "INSERT INTO assets (ticker, evaluation, ".
+pg_send_prepare($db_conn, "insert-asset", "INSERT INTO assets (ticker, evaluation, " .
                 "volume, market_cap, beta) VALUES ($1, $2, $3, $4, $5)");
-pg_send_prepare($db_conn, "insert-historical", "INSERT INTO assets (ticker, date, open, ".
-                "high, low, close, adjusted_close) VALUES ($1, $2, $3, $4, $5, $6, $7)");
+// Clear our results
+while (pg_get_result()) {}
+pg_send_prepare($db_conn, "insert-historical", "INSERT INTO assets (ticker, date, open, " .
+                "high, low, close, volume, adjusted_close) " .
+                "VALUES ($1, $2, $3, $4, $5, $6, $7, $8)");
 ?>

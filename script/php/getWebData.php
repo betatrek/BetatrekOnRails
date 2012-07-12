@@ -91,7 +91,7 @@ function getGoogleTickerData($ticker) {
  ************************************/
 function getYahooTickerData($ticker) {
     $url = "http://ichart.finance.yahoo.com/table.csv?s=" . $ticker .
-           "&d=" . date("n")-1 . "&e=" . date("d") . "&f=" . date("Y") . 
+           "&d=" . (date("n") - 1) . "&e=" . date("d") . "&f=" . date("Y") . 
            "&g=d&a=7&b=19&c=2004&ignore=.csv";
     $yf_page = "data/" . $ticker . "_yf.csv";
 
@@ -100,15 +100,17 @@ function getYahooTickerData($ticker) {
     system("curl --silent -o $yf_page \"$url\"");
 
     // Create CSV object
-    if ($fh = fopen($yf_page, "r")) {
+    if ($file_handle = fopen($yf_page, "r")) {
+        // Skip the first line
+        fgets($file_handle);
         while (!feof($file_handle)) {
             $line = fgets($file_handle);
-            list($date,$open,$high,$low,$close,$volume,$adjusted_close) = 
-                                                                 $asset = explode(',', 
-                                                                                  $line);
+            $asset = explode(',', $line);
+            array_splice($asset, 0, 0, array($ticker));
+            print_r($asset);
             insertHistoricalAsset($asset);
         }
-        fclose($fh);
+        fclose($file_handle);
     }
 }
 ?>

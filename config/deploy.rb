@@ -17,13 +17,17 @@ role :db,  "107.20.190.97", :primary => true # This is where Rails migrations wi
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
-   task :start, roles: :app do 
-   	run "touch #{current_release}/tmp/restart.txt"
-   end
-   task :stop do ; end
-   task :restart, :roles => :app, :except => { :no_release => true } do
-   	run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-   end
+  task :start, roles: :app do 
+  	run "touch #{current_release}/tmp/restart.txt"
+  end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+  	run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+  task :fetch_historic_data, :roles => :app do
+    run "cd #{File.join(current_path, 'script/php', '')} && " +
+        "php #{File.join(current_path, 'script/php', 'fetch_historic_data.php')}"
+  end
 end
 
 default_run_options[:pty] = true  # Must be set for the password prompt from git to work
@@ -43,32 +47,32 @@ ssh_options[:forward_agent] = true
 
 # Capistrano Recipes for managing delayed_job
 namespace :delayed_job do
-    def rails_env
-      fetch(:rails_env, false) ? "RAILS_ENV=#{fetch(:rails_env)}" : ''
-    end
+  def rails_env
+    fetch(:rails_env, false) ? "RAILS_ENV=#{fetch(:rails_env)}" : ''
+  end
 
-    def args
-      fetch(:delayed_job_args, "")
-    end
+  def args
+    fetch(:delayed_job_args, "")
+  end
 
-    def roles
-      fetch(:delayed_job_server_role, :app)
-    end
+  def roles
+    fetch(:delayed_job_server_role, :app)
+  end
 
-    desc "Stop the delayed_job process"
-    task :stop, :roles => lambda { roles } do
-      run "cd #{current_path};#{rails_env} script/delayed_job stop"
-    end
+  desc "Stop the delayed_job process"
+  task :stop, :roles => lambda { roles } do
+    run "cd #{current_path};#{rails_env} script/delayed_job stop"
+  end
 
-    desc "Start the delayed_job process"
-    task :start, :roles => lambda { roles } do
-      run "cd #{current_path};#{rails_env} script/delayed_job start #{args}"
-    end
+  desc "Start the delayed_job process"
+  task :start, :roles => lambda { roles } do
+    run "cd #{current_path};#{rails_env} script/delayed_job start #{args}"
+  end
 
-    desc "Restart the delayed_job process"
-    task :restart, :roles => lambda { roles } do
-      run "cd #{current_path};#{rails_env} script/delayed_job restart #{args}"
-    end
+  desc "Restart the delayed_job process"
+  task :restart, :roles => lambda { roles } do
+    run "cd #{current_path};#{rails_env} script/delayed_job restart #{args}"
+  end
 end
 
 # If you want to use command line options, for example to start multiple workers,
