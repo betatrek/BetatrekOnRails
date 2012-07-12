@@ -24,12 +24,17 @@ gem 'rails-i18n'
 gem 'i18n-country-translations'
 # Will paginate localization data
 gem 'will-paginate-i18n'
-# Scheduler for Ruby (at, in, cron and every)
-gem 'rufus-scheduler'
-# Natural language date processing 
-gem 'chronic'
+# Specify default values for ActiveRecord models
+gem "default_value_for"
 # Model based ruby authentication
 #gem 'authlogic'
+
+group :production do
+  # Scheduler for Ruby (at, in, cron and every)
+  gem 'rufus-scheduler'
+  # Natural language date processing 
+  gem 'chronic'
+end
 
 group :development do
   gem 'annotate', '~> 2.4.1.beta'
