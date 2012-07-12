@@ -56,6 +56,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.1)
       ffi (~> 1.0.6)
+    chronic (0.6.7)
     client_side_validations (3.1.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -181,6 +182,8 @@ GEM
       rspec (~> 2.8.0)
     ruby-hmac (0.4.0)
     rubyzip (0.9.6.1)
+    rufus-scheduler (2.0.17)
+      tzinfo (>= 0.3.23)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -223,6 +226,7 @@ DEPENDENCIES
   capify-ec2
   capistrano
   capybara (= 1.1.2)
+  chronic
   client_side_validations (~> 3.1.4)
   coffee-rails (~> 3.2.2)
   daemons
@@ -245,6 +249,7 @@ DEPENDENCIES
   rails-i18n
   rb-fsevent (= 0.4.3.1)
   rspec-rails (= 2.8.1)
+  rufus-scheduler
   sass-rails (~> 3.2.4)
   spork (= 0.9.0)
   state_machine (~> 1.1.2)

@@ -24,6 +24,10 @@ gem 'rails-i18n'
 gem 'i18n-country-translations'
 # Will paginate localization data
 gem 'will-paginate-i18n'
+# Scheduler for Ruby (at, in, cron and every)
+gem 'rufus-scheduler'
+# Natural language date processing 
+gem 'chronic'
 # Model based ruby authentication
 #gem 'authlogic'
 
