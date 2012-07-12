@@ -92,8 +92,8 @@ function getGoogleTickerData($ticker) {
 function getYahooTickerData($ticker) {
     $url = "http://ichart.finance.yahoo.com/table.csv?s=" . $ticker .
            "&d=" . date("n")-1 . "&e=" . date("d") . "&f=" . date("Y") . 
-           "&g=d&a=7&b=19&c=2004&ignore=.csv"
-    $yf_page = "data/".$ticker."_yf.csv";
+           "&g=d&a=7&b=19&c=2004&ignore=.csv";
+    $yf_page = "data/" . $ticker . "_yf.csv";
 
     print "$url\n";
     /* Gt the data from google finance */
