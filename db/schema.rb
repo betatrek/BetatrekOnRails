@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712035446) do
+ActiveRecord::Schema.define(:version => 20120712041748) do
 
   create_table "assets", :force => true do |t|
     t.string  "ticker"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20120712035446) do
     t.integer "market_cap"
     t.float   "beta"
     t.date    "date"
+    t.float   "open"
+    t.float   "high"
+    t.float   "low"
+    t.float   "close"
+    t.float   "adjusted_close"
   end
 
   create_table "delayed_jobs", :force => true do |t|
