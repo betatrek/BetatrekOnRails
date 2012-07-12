@@ -15,17 +15,13 @@ function getGoogleTickerData($ticker) {
     $gf_page = "data/".$ticker."_gf.html";
 
     print "$url\n";
-    /* Gt the data from google finance */
+    /* Get the data from google finance */
     system("curl --silent -o $gf_page \"$url\"");
 
-    /************************************
-     Create HTML DOM object 
-     ************************************/
+    // Create HTML DOM object 
     $html = file_get_html($gf_page);
 
-    /************************************
-     Extract the required data 
-     ************************************/
+    // Extract the required data 
     // Find the information tables
     $snap_data0 = $html->find('table.snap-data', 0);
     $snap_data1 = $html->find('table.snap-data', 1);
@@ -86,5 +82,33 @@ function getGoogleTickerData($ticker) {
     $asset->mkt_cap = intval($mkt_cap);
     $asset->beta = floatval($beta);
     insertAsset($asset);
+}
+
+/************************************
+ Retrieves the Yahoo Finance data for the given ticker and stores it in the
+ asset database.
+ @param $ticker the given String ticker symbol 
+ ************************************/
+function getYahooTickerData($ticker) {
+    $url = "http://ichart.finance.yahoo.com/table.csv?s=" . $ticker .
+           "&d=" . date("n")-1 . "&e=" . date("d") . "&f=" . date("Y") . 
+           "&g=d&a=7&b=19&c=2004&ignore=.csv"
+    $yf_page = "data/".$ticker."_yf.csv";
+
+    print "$url\n";
+    /* Gt the data from google finance */
+    system("curl --silent -o $yf_page \"$url\"");
+
+    // Create CSV object
+    if ($fh = fopen($yf_page, "r")) {
+        while (!feof($file_handle)) {
+            $line = fgets($file_handle);
+            list($date,$open,$high,$low,$close,$volume,$adjusted_close) = 
+                                                                 $asset = explode(',', 
+                                                                                  $line);
+            insertHistoricalAsset($asset);
+        }
+        fclose($fh);
+    }
 }
 ?>

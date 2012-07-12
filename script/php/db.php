@@ -12,17 +12,32 @@ function connect_to_database() {
 /************************************** 
  Inserts the given asset into the database.
  @param $asset The given Asset object 
- ***************************************/                           
+***************************************/                           
 function insertAsset($asset) {
     global $db_conn;
     // Execute the insert with the given asset
-    $result = pg_execute($db_conn, "insert", array($asset->ticker, 
+    $result = pg_execute($db_conn, "insert-asset", array($asset->ticker, 
                          $asset->evaluation, $asset->volume, 
                          $asset->market_cap, $asset->beta));
 
     if ($result === false) {
-       print "Error inserting asset" . pg_last_error();
+       print "Error inserting asset " . pg_last_error();
     }
+}
+
+/*************************************
+ Inserts the given historical asset into the database.
+ @param $asset The given array of historical asset data 
+               (date, ticker, open, high, low, close, volume, adjusted close)
+**************************************/
+function insertHistoricalAsset($asset) {
+    global $db_conn;
+    // Execute the insert with the given asset
+    $result = pg_execute($db_conn, "insert-historical", $asset);
+
+    if ($result === false) {
+        print "Error inserting historical asset " . pg_last_error();
+    } 
 }
 
 /*************************************
@@ -37,7 +52,9 @@ function close_database_connection() {
 $db_conn;
 connect_to_database();
 
-// Prepare a insert for execution
-pg_send_prepare($db_conn, "insert", "INSERT INTO assets (ticker, evaluation, volume, ". 
-                "market_cap, beta) VALUES ($1, $2, $3, $4, $5)");
+// Prepare inserts for execution
+pg_send_prepare($db_conn, "insert-asset", "INSERT INTO assets (ticker, evaluation, ".
+                "volume, market_cap, beta) VALUES ($1, $2, $3, $4, $5)");
+pg_send_prepare($db_conn, "insert-historical", "INSERT INTO assets (ticker, date, open, ".
+                "high, low, close, adjusted_close) VALUES ($1, $2, $3, $4, $5, $6, $7)");
 ?>

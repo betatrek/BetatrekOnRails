@@ -11,7 +11,7 @@ class Asset {
         $this->evaluation = 0;
         $this->volume = 0;
         $this->market_cap = 0;
-        $this->beta= 0;
+        $this->beta = 0;
     }
 }
 ?>

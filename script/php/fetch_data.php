@@ -1,6 +1,5 @@
 #!/usr/bin/php
 <?php
-include_once 'ticker.php';
 include 'getWebData.php';
 
 $nasdaq_file = "data/TKR_NASDAQ";
